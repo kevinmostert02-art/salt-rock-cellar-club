@@ -96,7 +96,7 @@ function WinePage() {
 
             {wine.awards && wine.awards.length > 0 && (
               <div className="mt-6 flex flex-wrap gap-2">
-                {wine.awards.map((a) => (
+                {wine.awards.map((a: string) => (
                   <span key={a} className="inline-flex items-center gap-2 text-[0.65rem] tracking-[0.25em] uppercase text-gold border border-gold/40 px-3 py-1.5">
                     <Award size={12} /> {a}
                   </span>
@@ -120,7 +120,7 @@ function WinePage() {
             <div className="mt-10">
               <p className="eyebrow mb-4">Pairs beautifully with</p>
               <div className="flex flex-wrap gap-2">
-                {wine.pairings.map((p) => (
+                {wine.pairings.map((p: string) => (
                   <span key={p} className="text-sm px-4 py-2 border border-border bg-card/40">{p}</span>
                 ))}
               </div>

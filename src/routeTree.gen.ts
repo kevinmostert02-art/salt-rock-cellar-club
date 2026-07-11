@@ -9,38 +9,123 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WinesRouteImport } from './routes/wines'
+import { Route as StoryRouteImport } from './routes/story'
+import { Route as SommelierRouteImport } from './routes/sommelier'
+import { Route as ClubRouteImport } from './routes/club'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WSlugRouteImport } from './routes/w.$slug'
 
+const WinesRoute = WinesRouteImport.update({
+  id: '/wines',
+  path: '/wines',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StoryRoute = StoryRouteImport.update({
+  id: '/story',
+  path: '/story',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SommelierRoute = SommelierRouteImport.update({
+  id: '/sommelier',
+  path: '/sommelier',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClubRoute = ClubRouteImport.update({
+  id: '/club',
+  path: '/club',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WSlugRoute = WSlugRouteImport.update({
+  id: '/w/$slug',
+  path: '/w/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/club': typeof ClubRoute
+  '/sommelier': typeof SommelierRoute
+  '/story': typeof StoryRoute
+  '/wines': typeof WinesRoute
+  '/w/$slug': typeof WSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/club': typeof ClubRoute
+  '/sommelier': typeof SommelierRoute
+  '/story': typeof StoryRoute
+  '/wines': typeof WinesRoute
+  '/w/$slug': typeof WSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/club': typeof ClubRoute
+  '/sommelier': typeof SommelierRoute
+  '/story': typeof StoryRoute
+  '/wines': typeof WinesRoute
+  '/w/$slug': typeof WSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/club' | '/sommelier' | '/story' | '/wines' | '/w/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/club' | '/sommelier' | '/story' | '/wines' | '/w/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/club'
+    | '/sommelier'
+    | '/story'
+    | '/wines'
+    | '/w/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ClubRoute: typeof ClubRoute
+  SommelierRoute: typeof SommelierRoute
+  StoryRoute: typeof StoryRoute
+  WinesRoute: typeof WinesRoute
+  WSlugRoute: typeof WSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/wines': {
+      id: '/wines'
+      path: '/wines'
+      fullPath: '/wines'
+      preLoaderRoute: typeof WinesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/story': {
+      id: '/story'
+      path: '/story'
+      fullPath: '/story'
+      preLoaderRoute: typeof StoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sommelier': {
+      id: '/sommelier'
+      path: '/sommelier'
+      fullPath: '/sommelier'
+      preLoaderRoute: typeof SommelierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/club': {
+      id: '/club'
+      path: '/club'
+      fullPath: '/club'
+      preLoaderRoute: typeof ClubRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +133,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/w/$slug': {
+      id: '/w/$slug'
+      path: '/w/$slug'
+      fullPath: '/w/$slug'
+      preLoaderRoute: typeof WSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ClubRoute: ClubRoute,
+  SommelierRoute: SommelierRoute,
+  StoryRoute: StoryRoute,
+  WinesRoute: WinesRoute,
+  WSlugRoute: WSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

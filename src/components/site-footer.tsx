@@ -2,6 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook } from "lucide-react";
 import { useState } from "react";
 
+import logoAsset from "@/assets/saltrock-logo.webp.asset.json";
+
 export function SiteFooter() {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
@@ -40,7 +42,16 @@ export function SiteFooter() {
 
       <div className="container-luxe py-20 grid grid-cols-2 md:grid-cols-4 gap-10">
         <div className="col-span-2">
-          <div className="text-2xl font-display">Salt<span className="text-gold">·</span>Rock</div>
+          <div className="flex items-center gap-3">
+            <img
+              src={logoAsset.url}
+              alt="Salt Rock Wines"
+              width={52}
+              height={52}
+              className="h-11 w-auto opacity-90"
+            />
+            <div className="text-2xl font-display">Salt<span className="text-gold">·</span>Rock</div>
+          </div>
           <p className="mt-4 text-sm text-cream/60 max-w-xs leading-relaxed">
             A collaboration between two nomads of the South African wine industry,
             revealing the intricate connection between climate and terroir in the

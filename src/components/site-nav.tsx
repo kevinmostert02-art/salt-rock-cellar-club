@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { Menu, X, ShoppingBag } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
+import logoAsset from "@/assets/saltrock-logo.webp.asset.json";
+
 const nav = [
   { to: "/wines", label: "Wines" },
   { to: "/sommelier", label: "Sommelier" },
@@ -45,6 +47,13 @@ export function SiteNav({ transparentOnTop = true }: { transparentOnTop?: boolea
           }`}
         >
           <Link to="/" className="flex items-center gap-3 group">
+            <img
+              src={logoAsset.url}
+              alt="Salt Rock Wines"
+              width={40}
+              height={40}
+              className="h-9 w-auto opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+            />
             <span className="text-xl md:text-[1.35rem] font-display tracking-wide text-cream">
               Salt<span className="text-gold">·</span>Rock
             </span>

@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Menu, X, ShoppingBag } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 
 const nav = [
   { to: "/wines", label: "Wines" },
@@ -11,86 +12,124 @@ const nav = [
 
 export function SiteNav({ transparentOnTop = true }: { transparentOnTop?: boolean }) {
   const [scrolled, setScrolled] = useState(!transparentOnTop);
+  const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
+  const lastY = useRef(0);
 
   useEffect(() => {
-    if (!transparentOnTop) return;
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(transparentOnTop ? y > 40 : true);
+      if (y > 160 && y > lastY.current + 4) setHidden(true);
+      else if (y < lastY.current - 4) setHidden(false);
+      lastY.current = y;
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [transparentOnTop]);
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-charcoal/85 backdrop-blur-xl border-b border-border"
-          : "bg-transparent"
-      }`}
+    <motion.header
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: hidden && !open ? -120 : 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
+      className="fixed inset-x-0 top-0 z-50"
     >
-      <div className="container-luxe flex h-20 items-center justify-between">
-        <Link to="/" className="flex items-center gap-3 group">
-          <span className="text-xl md:text-2xl font-display tracking-wide text-cream">
-            Salt<span className="text-gold">·</span>Rock
-          </span>
-          <span className="hidden sm:inline text-[0.6rem] tracking-[0.35em] uppercase text-muted-foreground group-hover:text-gold transition-colors">
-            Wines · Stellenbosch
-          </span>
-        </Link>
-
-        <nav className="hidden md:flex items-center gap-10">
-          {nav.map((n) => (
-            <Link
-              key={n.to}
-              to={n.to}
-              className="text-[0.72rem] tracking-[0.28em] uppercase text-cream/85 hover:text-gold transition-colors link-underline"
-              activeProps={{ className: "text-gold" }}
-            >
-              {n.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="hidden md:flex items-center gap-6">
-          <Link to="/wines" className="text-[0.72rem] tracking-[0.28em] uppercase text-cream/85 hover:text-gold transition-colors">
-            Shop
-          </Link>
-          <span className="h-4 w-px bg-border" />
-          <button className="text-[0.72rem] tracking-[0.28em] uppercase text-cream/85 hover:text-gold transition-colors">
-            Cart (0)
-          </button>
-        </div>
-
-        <button
-          className="md:hidden text-cream p-2 -mr-2"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Menu"
+      <div className={`container-luxe pt-4 md:pt-5 transition-all duration-500`}>
+        <div
+          className={`flex h-16 md:h-[68px] items-center justify-between px-4 md:px-7 transition-all duration-500 ${
+            scrolled
+              ? "glass-strong rounded-full shadow-[0_10px_40px_-10px_oklch(0_0_0_/_0.5)]"
+              : "bg-transparent"
+          }`}
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
-      </div>
+          <Link to="/" className="flex items-center gap-3 group">
+            <span className="text-xl md:text-[1.35rem] font-display tracking-wide text-cream">
+              Salt<span className="text-gold">·</span>Rock
+            </span>
+            <span className="hidden lg:inline text-[0.55rem] tracking-[0.4em] uppercase text-muted-foreground/80 group-hover:text-gold transition-colors">
+              Stellenbosch
+            </span>
+          </Link>
 
-      {open && (
-        <div className="md:hidden bg-charcoal/95 backdrop-blur-xl border-t border-border animate-reveal">
-          <nav className="container-luxe py-8 flex flex-col gap-6">
+          <nav className="hidden md:flex items-center gap-9">
             {nav.map((n) => (
               <Link
                 key={n.to}
                 to={n.to}
-                onClick={() => setOpen(false)}
-                className="text-2xl font-display text-cream hover:text-gold transition-colors"
+                className="text-[0.68rem] tracking-[0.3em] uppercase text-cream/85 hover:text-gold transition-colors link-underline"
+                activeProps={{ className: "text-gold" }}
               >
                 {n.label}
               </Link>
             ))}
-            <div className="hairline my-2" />
-            <Link to="/wines" onClick={() => setOpen(false)} className="text-[0.72rem] tracking-[0.28em] uppercase text-cream/70">
-              Shop the Cellar →
-            </Link>
           </nav>
+
+          <div className="hidden md:flex items-center gap-4">
+            <Link
+              to="/wines"
+              className="text-[0.68rem] tracking-[0.3em] uppercase text-cream/85 hover:text-gold transition-colors"
+            >
+              Shop
+            </Link>
+            <button
+              className="relative flex items-center gap-2 text-[0.68rem] tracking-[0.3em] uppercase text-cream/85 hover:text-gold transition-colors"
+              aria-label="Cart"
+            >
+              <ShoppingBag size={14} />
+              <span>0</span>
+            </button>
+          </div>
+
+          <button
+            className="md:hidden text-cream p-2 -mr-2"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Menu"
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
         </div>
-      )}
-    </header>
+      </div>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.35 }}
+            className="md:hidden mx-4 mt-3 glass-strong rounded-3xl overflow-hidden"
+          >
+            <nav className="p-8 flex flex-col gap-6">
+              {nav.map((n, i) => (
+                <motion.div
+                  key={n.to}
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.05 * i + 0.1 }}
+                >
+                  <Link
+                    to={n.to}
+                    onClick={() => setOpen(false)}
+                    className="text-3xl font-display text-cream hover:text-gold transition-colors"
+                  >
+                    {n.label}
+                  </Link>
+                </motion.div>
+              ))}
+              <div className="hairline my-2" />
+              <Link
+                to="/wines"
+                onClick={() => setOpen(false)}
+                className="text-[0.7rem] tracking-[0.3em] uppercase text-gold"
+              >
+                Shop the Cellar →
+              </Link>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 }

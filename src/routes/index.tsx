@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
@@ -40,49 +40,54 @@ function Particles() {
 function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "28%"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+  const opacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
 
   return (
-    <section ref={ref} className="relative h-[100svh] min-h-[640px] w-full overflow-hidden">
-      <motion.div style={{ y }} className="absolute inset-0">
+    <section ref={ref} className="relative h-[100svh] min-h-[680px] w-full overflow-hidden">
+      <motion.div style={{ y, scale }} className="absolute inset-0 will-change-transform">
         <img
           src={heroImg}
           alt="Salt Rock vineyard at golden hour"
           width={1920}
           height={1280}
-          className="h-[115%] w-full object-cover animate-slow-zoom"
+          className="h-[118%] w-full object-cover animate-slow-zoom"
         />
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero-veil)" }} />
+        <div className="absolute top-[10%] right-[8%] h-[38vw] w-[38vw] max-w-[560px] max-h-[560px] rounded-full bg-gold/12 blur-[120px] animate-aurora" />
+        <div className="absolute bottom-[15%] left-[-5%] h-[32vw] w-[32vw] max-w-[500px] max-h-[500px] rounded-full bg-burgundy/40 blur-[130px] animate-aurora" style={{ animationDelay: "5s" }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at center, transparent 40%, oklch(0.08 0.005 20 / 0.6) 100%)" }} />
       </motion.div>
 
       <Particles />
 
-      <motion.div style={{ opacity }} className="relative z-10 h-full container-luxe flex flex-col justify-end pb-24 md:pb-32">
+      <motion.div style={{ opacity }} className="relative z-10 h-full container-luxe flex flex-col justify-end pb-28 md:pb-36">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="eyebrow"
+          className="eyebrow flex items-center gap-3"
         >
-          Stellenbosch · Est. Since climate met craft
+          <span className="gold-line" />
+          Stellenbosch · Since climate met craft
         </motion.p>
 
         <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.4, delay: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
-          className="mt-6 text-5xl sm:text-7xl md:text-[7.5rem] leading-[0.95] font-display max-w-5xl"
+          transition={{ duration: 1.6, delay: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
+          className="mt-8 text-[3.2rem] sm:text-7xl md:text-[8rem] leading-[0.92] font-display max-w-5xl tracking-[-0.02em]"
         >
           Crafted by Nature.<br />
-          <em className="text-gold not-italic italic font-light">Perfected</em> by Time.
+          <em className="not-italic italic font-light text-gradient-gold">Perfected</em> by Time.
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.9 }}
-          className="mt-8 max-w-xl text-base md:text-lg text-cream/80 leading-relaxed"
+          transition={{ duration: 1, delay: 0.95 }}
+          className="mt-10 max-w-xl text-base md:text-lg text-cream/80 leading-[1.8]"
         >
           Single-site South African wines that reveal the intricate connection
           between climate and terroir — poured with intention, aged with patience.
@@ -91,8 +96,8 @@ function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.1 }}
-          className="mt-12 flex flex-wrap gap-4"
+          transition={{ duration: 1, delay: 1.15 }}
+          className="mt-14 flex flex-wrap gap-4"
         >
           <Link to="/wines" className="btn-gold">
             Shop Wines <ArrowRight size={14} />
@@ -106,11 +111,17 @@ function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.6, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-cream/60"
+        transition={{ delay: 1.8, duration: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3 text-cream/60"
       >
-        <span className="text-[0.6rem] tracking-[0.35em] uppercase">Scroll</span>
-        <ChevronDown size={14} className="animate-bounce" />
+        <span className="text-[0.55rem] tracking-[0.45em] uppercase">Scroll</span>
+        <span className="relative block h-10 w-px bg-gradient-to-b from-cream/40 to-transparent overflow-hidden">
+          <motion.span
+            animate={{ y: [-40, 40] }}
+            transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute inset-x-0 top-0 h-4 bg-gold"
+          />
+        </span>
       </motion.div>
     </section>
   );

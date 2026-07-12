@@ -56,47 +56,37 @@ function WinesPage() {
           </Reveal>
         </section>
 
-        <section className="border-y border-border sticky top-20 z-30 bg-charcoal/90 backdrop-blur-xl">
-          <div className="container-luxe py-5 flex flex-wrap items-center gap-x-8 gap-y-4">
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-[0.65rem] tracking-[0.3em] uppercase text-muted-foreground mr-2">Type</span>
-              {TYPES.map((t) => (
-                <button
-                  key={t}
-                  onClick={() => setType(t)}
-                  className={`text-[0.7rem] tracking-[0.2em] uppercase px-3 py-1.5 border transition-all ${
-                    type === t ? "border-gold text-gold" : "border-border text-cream/70 hover:text-cream"
-                  }`}
+        <section className="sticky top-24 z-30">
+          <div className="glass-strong border-y border-white/8">
+            <div className="container-luxe py-5 flex flex-wrap items-center gap-x-6 gap-y-4">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-[0.6rem] tracking-[0.3em] uppercase text-muted-foreground mr-2">Type</span>
+                {TYPES.map((t) => (
+                  <button key={t} onClick={() => setType(t)} data-active={type === t} className="pill-filter">
+                    {t}
+                  </button>
+                ))}
+              </div>
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-[0.6rem] tracking-[0.3em] uppercase text-muted-foreground mr-2">Range</span>
+                {RANGES.map((r) => (
+                  <button key={r} onClick={() => setRange(r)} data-active={range === r} className="pill-filter">
+                    {r}
+                  </button>
+                ))}
+              </div>
+              <div className="ml-auto flex items-center gap-3">
+                <span className="text-[0.6rem] tracking-[0.3em] uppercase text-muted-foreground">Sort</span>
+                <select
+                  value={sort}
+                  onChange={(e) => setSort(e.target.value as typeof sort)}
+                  className="bg-transparent border border-white/15 text-[0.65rem] tracking-[0.22em] uppercase px-3 py-1.5 rounded-full focus:border-gold focus:outline-none"
                 >
-                  {t}
-                </button>
-              ))}
-            </div>
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-[0.65rem] tracking-[0.3em] uppercase text-muted-foreground mr-2">Range</span>
-              {RANGES.map((r) => (
-                <button
-                  key={r}
-                  onClick={() => setRange(r)}
-                  className={`text-[0.7rem] tracking-[0.2em] uppercase px-3 py-1.5 border transition-all ${
-                    range === r ? "border-gold text-gold" : "border-border text-cream/70 hover:text-cream"
-                  }`}
-                >
-                  {r}
-                </button>
-              ))}
-            </div>
-            <div className="ml-auto flex items-center gap-3">
-              <span className="text-[0.65rem] tracking-[0.3em] uppercase text-muted-foreground">Sort</span>
-              <select
-                value={sort}
-                onChange={(e) => setSort(e.target.value as typeof sort)}
-                className="bg-transparent border border-border text-[0.7rem] tracking-[0.2em] uppercase px-3 py-1.5 focus:border-gold focus:outline-none"
-              >
-                <option value="featured">Featured</option>
-                <option value="price-asc">Price · Low to High</option>
-                <option value="price-desc">Price · High to Low</option>
-              </select>
+                  <option value="featured">Featured</option>
+                  <option value="price-asc">Price · Low to High</option>
+                  <option value="price-desc">Price · High to Low</option>
+                </select>
+              </div>
             </div>
           </div>
         </section>

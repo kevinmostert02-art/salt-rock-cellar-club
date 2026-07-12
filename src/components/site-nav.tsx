@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Menu, X, ShoppingBag } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
-import logoAsset from "@/assets/saltrock-logo.png.asset.json";
+import logoAsset from "@/assets/saltrock-logo.webp.asset.json";
 
 const nav = [
   { to: "/wines", label: "Wines" },

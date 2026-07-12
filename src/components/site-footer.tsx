@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook } from "lucide-react";
 import { useState } from "react";
 
-import logoAsset from "@/assets/saltrock-logo.png.asset.json";
+import logoAsset from "@/assets/saltrock-logo.webp.asset.json";
 
 export function SiteFooter() {
   const [email, setEmail] = useState("");

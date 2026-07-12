@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";

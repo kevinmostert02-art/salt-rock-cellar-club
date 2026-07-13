@@ -9,7 +9,8 @@ import heroImg from "@/assets/hero-vineyard.jpg";
 import cellarImg from "@/assets/story-cellar.jpg";
 import harvestImg from "@/assets/story-harvest.jpg";
 import pairingImg from "@/assets/pairing.jpg";
-import bottleImg from "@/assets/bottle-placeholder.jpg";
+import bottleImg from "@/assets/bottles/Stand_Alone_Pinot_Noir.jpg.asset.json";
+const bottleImgUrl = bottleImg.url;
 
 export const Route = createFileRoute("/story")({
   head: () => ({

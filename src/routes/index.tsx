@@ -62,7 +62,7 @@ function Hero() {
 
       <Particles />
 
-      <motion.div style={{ opacity }} className="relative z-10 h-full container-luxe flex flex-col justify-end pt-28 md:pt-32 pb-28 md:pb-36">
+      <motion.div style={{ opacity }} className="relative z-10 h-full container-luxe flex flex-col justify-end pt-32 md:pt-40 lg:pt-44 pb-28 md:pb-32">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -77,7 +77,7 @@ function Hero() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.6, delay: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
-          className="mt-8 text-[2.4rem] sm:text-6xl md:text-[8rem] leading-[1] md:leading-[0.92] font-display max-w-5xl tracking-[-0.02em]"
+          className="mt-8 text-[2.4rem] sm:text-6xl md:text-[5.5rem] lg:text-[7rem] xl:text-[8rem] leading-[1] md:leading-[0.95] font-display max-w-5xl tracking-[-0.02em]"
         >
           Crafted by Nature.<br />
           <em className="not-italic italic font-light text-gradient-gold">Perfected</em> by Time.

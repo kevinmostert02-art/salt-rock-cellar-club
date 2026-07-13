@@ -209,11 +209,53 @@ function WinePage() {
           </Reveal>
         </section>
 
-        <section className="container-luxe py-16 md:py-24">
+        <section className="container-luxe py-16 md:py-24 grid md:grid-cols-3 gap-6 md:gap-8">
+          <Reveal>
+            <div className="glass p-8 h-full">
+              <p className="eyebrow mb-4">Winemaker's Note</p>
+              <p className="text-cream/80 leading-[1.8] font-display italic text-lg">"{wine.winemakerComment}"</p>
+            </div>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <div className="glass p-8 h-full">
+              <p className="eyebrow mb-4">Vinification</p>
+              <p className="text-cream/75 leading-[1.75] text-[0.95rem]">{wine.vinification}</p>
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <div className="glass p-8 h-full">
+              <p className="eyebrow mb-4">Soil &amp; Terroir</p>
+              <p className="text-cream/75 leading-[1.75] text-[0.95rem]">{wine.terroir}</p>
+            </div>
+          </Reveal>
+        </section>
+
+        <section className="container-luxe pb-16 md:pb-24">
+          <div className="glass p-8 md:p-12">
+            <p className="eyebrow mb-8">Technical Data</p>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8">
+              {[
+                { label: "Alcohol", value: wine.technical.alcohol },
+                { label: "Residual Sugar", value: wine.technical.residualSugar },
+                { label: "Total Acidity", value: wine.technical.totalAcidity },
+                { label: "Volatile Acidity", value: wine.technical.volatileAcidity },
+                { label: "pH", value: wine.technical.pH },
+              ].map((s) => (
+                <div key={s.label}>
+                  <p className="text-[0.55rem] tracking-[0.3em] uppercase text-cream/50">{s.label}</p>
+                  <p className="mt-2 text-2xl font-display text-gradient-gold">{s.value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="container-luxe py-8 md:py-16">
           <div className="glass p-8 md:p-12">
             <CellarTimeline vintage={wine.vintage} />
           </div>
         </section>
+
 
         {related.length > 0 && (
           <section className="container-luxe py-24 md:py-32">

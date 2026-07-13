@@ -77,7 +77,7 @@ function Hero() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.6, delay: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
-          className="mt-8 text-[2.4rem] sm:text-6xl md:text-[5.5rem] lg:text-[7rem] xl:text-[8rem] leading-[1] md:leading-[0.95] font-display max-w-5xl tracking-[-0.02em]"
+          className="mt-6 md:mt-8 text-[2.4rem] sm:text-5xl md:text-[4.5rem] lg:text-[5.5rem] xl:text-[7rem] leading-[1] md:leading-[0.95] font-display max-w-5xl tracking-[-0.02em]"
         >
           Crafted by Nature.<br />
           <em className="not-italic italic font-light text-gradient-gold">Perfected</em> by Time.

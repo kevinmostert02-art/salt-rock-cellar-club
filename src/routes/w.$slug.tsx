@@ -136,11 +136,6 @@ function WinePage() {
                   className="relative h-full w-full object-contain p-6 md:p-10 animate-bottle-float"
                 />
               </div>
-              {wine.isPlaceholderImage && (
-                <span className="mt-4 inline-block text-[0.5rem] tracking-[0.3em] uppercase text-gold/70 border border-gold/30 px-2 py-1 rounded-full">
-                  Placeholder — official bottle coming soon
-                </span>
-              )}
             </div>
           </Reveal>
 

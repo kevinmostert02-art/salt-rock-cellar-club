@@ -62,7 +62,7 @@ function Hero() {
 
       <Particles />
 
-      <motion.div style={{ opacity }} className="relative z-10 h-full container-luxe flex flex-col justify-end pb-28 md:pb-36">
+      <motion.div style={{ opacity }} className="relative z-10 h-full container-luxe flex flex-col justify-end pt-28 md:pt-32 pb-28 md:pb-36">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

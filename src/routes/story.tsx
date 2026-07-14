@@ -10,7 +10,45 @@ import cellarImg from "@/assets/story-cellar.jpg";
 import harvestImg from "@/assets/story-harvest.jpg";
 import pairingImg from "@/assets/pairing.jpg";
 import bottleAsset from "@/assets/bottles/Stand_Alone_Pinot_Noir.jpg.asset.json";
+import founder1Asset from "@/assets/team/founder-1.jpg.asset.json";
+import founder2Asset from "@/assets/team/founder-2.jpg.asset.json";
+import standAloneAsset from "@/assets/ranges/stand-alone-range.png.asset.json";
+import climateAsset from "@/assets/ranges/climate-range.jpg.asset.json";
+import lifestyleAsset from "@/assets/ranges/lifestyle-range.png.asset.json";
 const bottleImg = bottleAsset.url;
+
+const founders = [
+  {
+    img: founder1Asset.url,
+    role: "Co-Founder · Winemaker",
+    name: "The Winemaker",
+    bio: "A restless nomad of the Cape wine industry, chasing single vineyards from Elgin to the Hemel-en-Aarde Ridge in pursuit of wines that speak honestly of their season.",
+  },
+  {
+    img: founder2Asset.url,
+    role: "Co-Founder · Viticulturist",
+    name: "The Grower",
+    bio: "Guardian of the vines. Decades spent reading the soils and skies of Stellenbosch, coaxing balance from bush vines that others have long overlooked.",
+  },
+];
+
+const ranges = [
+  {
+    img: standAloneAsset.url,
+    name: "Stand Alone",
+    body: "Our Stand Alone wines are all about reflecting the best possible version of what South Africa can give — single vineyards from the most bespoke slopes and regions for each variety, produced with minimal intervention and aged in a variety of vessels. Pinot Noir from the Hemel-en-Aarde Ridge, Chardonnay from Elgin and Chenin Blanc from Helderberg Stellenbosch.",
+  },
+  {
+    img: climateAsset.url,
+    name: "Climate",
+    body: "Our Climate wines have been crafted to create awareness of two climate phenomena the world has been experiencing in recent years: El Niño and La Niña. Serious enough to intrigue the wine geek, yet approachable for the first-time drinker — built on two unconventional varieties, Cinsault and Semillon Gris, from single vineyards that truly reflect the variety in a specific terroir.",
+  },
+  {
+    img: lifestyleAsset.url,
+    name: "Lifestyle",
+    body: "Our Lifestyle wines are produced from special pockets around the greater Stellenbosch wine route to express the uniqueness of the region. These wines are distinct and truly reflect the terroir in each variety — and, as with every Salt Rock bottling, our winemaking approach remains minimal.",
+  },
+];
 
 export const Route = createFileRoute("/story")({
   head: () => ({

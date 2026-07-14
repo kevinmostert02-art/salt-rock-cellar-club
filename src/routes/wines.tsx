@@ -56,7 +56,7 @@ function WinesPage() {
           </Reveal>
         </section>
 
-        <section className="sticky top-24 z-30">
+        <section>
           <div className="glass-strong border-y border-white/8">
             <div className="container-luxe py-5 flex flex-wrap items-center gap-x-6 gap-y-4">
               <div className="flex items-center gap-2 flex-wrap">

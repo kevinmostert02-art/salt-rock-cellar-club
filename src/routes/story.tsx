@@ -98,37 +98,18 @@ function StoryPage() {
         {/* Founders */}
         <section className="border-b border-border">
           <div className="container-luxe py-20 md:py-32">
-            <div className="max-w-2xl">
-              <Reveal>
-                <p className="eyebrow">The Makers</p>
-                <h2 className="mt-6 text-4xl md:text-6xl font-display leading-[1]">
-                  The men behind <em className="text-gold not-italic">the wine</em>.
-                </h2>
-                <p className="mt-6 text-lg text-cream/70 leading-[1.9]">
-                  Two nomads in the South African wine industry, united by a single obsession —
-                  bottling the honest connection between climate and terroir.
-                </p>
-              </Reveal>
-            </div>
-
-            <div className="mt-16 md:mt-20 grid gap-10 md:gap-14 sm:grid-cols-2">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16">
               {founders.map((f, i) => (
-                <Reveal key={f.name} delay={i * 0.1}>
+                <Reveal key={f.name} delay={i * 0.12}>
                   <figure className="group">
-                    <div className="relative aspect-[4/5] overflow-hidden bg-charcoal/50">
+                    <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 overflow-hidden rounded-full bg-charcoal/50 ring-1 ring-cream/10 shadow-2xl">
                       <img
                         src={f.img}
                         alt={f.name}
                         loading="lazy"
                         className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-transparent to-transparent" />
                     </div>
-                    <figcaption className="mt-6">
-                      <p className="text-[0.7rem] tracking-[0.35em] uppercase text-gold">{f.role}</p>
-                      <p className="mt-3 text-2xl md:text-3xl font-display">{f.name}</p>
-                      <p className="mt-4 text-cream/70 leading-[1.8]">{f.bio}</p>
-                    </figcaption>
                   </figure>
                 </Reveal>
               ))}

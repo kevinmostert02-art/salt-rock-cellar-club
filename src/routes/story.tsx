@@ -95,22 +95,129 @@ function StoryPage() {
           </div>
         </section>
 
+        {/* Founders */}
+        <section className="border-b border-border">
+          <div className="container-luxe py-20 md:py-32">
+            <div className="max-w-2xl">
+              <Reveal>
+                <p className="eyebrow">The Makers</p>
+                <h2 className="mt-6 text-4xl md:text-6xl font-display leading-[1]">
+                  The men behind <em className="text-gold not-italic">the wine</em>.
+                </h2>
+                <p className="mt-6 text-lg text-cream/70 leading-[1.9]">
+                  Two nomads in the South African wine industry, united by a single obsession —
+                  bottling the honest connection between climate and terroir.
+                </p>
+              </Reveal>
+            </div>
+
+            <div className="mt-16 md:mt-20 grid gap-10 md:gap-14 sm:grid-cols-2">
+              {founders.map((f, i) => (
+                <Reveal key={f.name} delay={i * 0.1}>
+                  <figure className="group">
+                    <div className="relative aspect-[4/5] overflow-hidden bg-charcoal/50">
+                      <img
+                        src={f.img}
+                        alt={f.name}
+                        loading="lazy"
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-transparent to-transparent" />
+                    </div>
+                    <figcaption className="mt-6">
+                      <p className="text-[0.7rem] tracking-[0.35em] uppercase text-gold">{f.role}</p>
+                      <p className="mt-3 text-2xl md:text-3xl font-display">{f.name}</p>
+                      <p className="mt-4 text-cream/70 leading-[1.8]">{f.bio}</p>
+                    </figcaption>
+                  </figure>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Winemaking Journey */}
         <section className="container-luxe py-24 md:py-32 max-w-3xl">
           <Reveal>
-            <p className="text-xl md:text-2xl font-display italic text-cream/85 leading-[1.6]">
-              Salt Rock Wines is a collaboration between two nomads in the South African wine industry —
-              both passionate about revealing the intricate connection between climate and terroir in
-              the sundrenched vineyards of Stellenbosch.
+            <p className="eyebrow">Our Winemaking Journey</p>
+            <h2 className="mt-6 text-4xl md:text-6xl font-display leading-[1]">
+              A collaboration <em className="text-gold not-italic">poured slowly</em>.
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="mt-10 text-xl md:text-2xl font-display italic text-cream/85 leading-[1.6]">
+              Two nomads in the South African wine industry came together to collaborate and
+              express themselves in ways that the day-to-day hustle wouldn't allow.
             </p>
           </Reveal>
-          <Reveal delay={0.15}>
+          <Reveal delay={0.2}>
             <p className="mt-8 text-lg text-cream/70 leading-[1.9]">
-              Our wines are serious enough to intrigue the wine aficionado, yet approachable and pleasing
-              for the first-time wine drinker. Every bottle is a small honest record of a specific vintage,
-              a specific site, and the season it survived.
+              Through Salt Rock Wines, we aim to create awareness of the effect of two climate
+              phenomena the world has been experiencing in the past few years: El Niño and La Niña.
+            </p>
+          </Reveal>
+          <Reveal delay={0.3}>
+            <p className="mt-6 text-lg text-cream/70 leading-[1.9]">
+              The wines we produce are suitable for consumption all year round — serious enough
+              to intrigue the wine aficionado, yet approachable and pleasing for the first-time
+              wine drinker.
             </p>
           </Reveal>
         </section>
+
+        {/* Ranges */}
+        <section className="border-t border-border bg-charcoal/60">
+          <div className="container-luxe py-24 md:py-32">
+            <div className="max-w-2xl">
+              <Reveal>
+                <p className="eyebrow">The Ranges</p>
+                <h2 className="mt-6 text-4xl md:text-6xl font-display leading-[1]">
+                  Three <em className="text-gold not-italic">expressions</em>. One philosophy.
+                </h2>
+              </Reveal>
+            </div>
+
+            <div className="mt-16 md:mt-24 space-y-24 md:space-y-32">
+              {ranges.map((r, i) => (
+                <div
+                  key={r.name}
+                  className={`grid md:grid-cols-12 gap-10 md:gap-16 items-center ${
+                    i % 2 ? "md:[&>*:first-child]:order-2" : ""
+                  }`}
+                >
+                  <Reveal>
+                    <div className="md:col-span-6 relative aspect-[4/5] md:aspect-[5/6] overflow-hidden bg-cream/95 flex items-center justify-center p-8 md:p-14">
+                      <img
+                        src={r.img}
+                        alt={`${r.name} Range`}
+                        loading="lazy"
+                        className="max-h-full max-w-full object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,0.35)]"
+                      />
+                    </div>
+                  </Reveal>
+                  <Reveal delay={0.15}>
+                    <div className="md:col-span-6">
+                      <p className="text-[0.7rem] tracking-[0.35em] uppercase text-gold">
+                        Range · 0{i + 1}
+                      </p>
+                      <h3 className="mt-4 text-4xl md:text-6xl font-display leading-[1]">
+                        {r.name}
+                      </h3>
+                      <p className="mt-6 text-lg text-cream/75 leading-[1.9]">{r.body}</p>
+                      <Link
+                        to="/wines"
+                        className="mt-8 inline-flex items-center gap-2 text-[0.7rem] tracking-[0.35em] uppercase text-gold link-underline"
+                      >
+                        Explore the range <ArrowRight size={14} />
+                      </Link>
+                    </div>
+                  </Reveal>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
 
         {chapters.map((c, i) => (
           <section key={c.n} className="border-t border-border">

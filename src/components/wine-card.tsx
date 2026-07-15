@@ -1,7 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import type { Wine } from "@/lib/wines";
-import { Award, Thermometer, Plus } from "lucide-react";
+import { Award, Thermometer, Plus, Heart, Check } from "lucide-react";
+import { useCart, useWishlist } from "@/lib/cart";
+import { useState } from "react";
 
 function Meter({ level, label }: { level: number; label: string }) {
   return (
@@ -22,21 +24,32 @@ function Meter({ level, label }: { level: number; label: string }) {
 }
 
 export function WineCard({ wine, index = 0 }: { wine: Wine; index?: number }) {
+  const { add } = useCart();
+  const { has, toggle } = useWishlist();
+  const [added, setAdded] = useState(false);
+  const isWished = has(wine.slug);
+
+  function onAdd(e: React.MouseEvent) {
+    e.preventDefault();
+    add(wine.slug, 1);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1400);
+  }
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 1, delay: index * 0.08, ease: [0.2, 0.8, 0.2, 1] }}
-      whileHover={{ y: -6 }}
-      className="group relative flex flex-col glass rounded-[2px] overflow-hidden transition-[border-color,box-shadow] duration-700 hover:border-gold/30 hover:shadow-[0_30px_80px_-30px_oklch(0_0_0_/_0.7),0_0_0_1px_oklch(0.76_0.14_85_/_0.15)]"
+      whileHover={{ y: -8 }}
+      className="group relative flex flex-col glass rounded-[2px] overflow-hidden transition-[border-color,box-shadow] duration-700 hover:border-gold/40 hover:shadow-[0_36px_90px_-30px_oklch(0_0_0_/_0.75),0_0_0_1px_oklch(0.76_0.14_85_/_0.25)]"
     >
       <Link
         to="/w/$slug"
         params={{ slug: wine.slug }}
         className="relative aspect-[4/5] overflow-hidden bg-gradient-to-b from-charcoal via-burgundy-deep/60 to-charcoal"
       >
-        {/* Ambient aurora */}
         <div className="absolute -inset-8 opacity-60 pointer-events-none">
           <div className="absolute top-[20%] left-[15%] h-40 w-40 rounded-full bg-burgundy/40 blur-3xl animate-aurora" />
           <div className="absolute bottom-[15%] right-[10%] h-32 w-32 rounded-full bg-gold/15 blur-3xl animate-aurora" style={{ animationDelay: "3s" }} />
@@ -49,11 +62,10 @@ export function WineCard({ wine, index = 0 }: { wine: Wine; index?: number }) {
             loading="lazy"
             width={800}
             height={1000}
-            className="relative h-full w-full object-contain p-8 md:p-10 transition-transform duration-[1600ms] ease-out group-hover:scale-[1.06] group-hover:-translate-y-2 animate-bottle-float"
+            className="relative h-full w-full object-contain p-8 md:p-10 transition-transform duration-[1600ms] ease-out group-hover:scale-[1.08] group-hover:-translate-y-3 animate-bottle-float"
           />
         </div>
 
-        {/* Reflection */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-charcoal to-transparent" />
 
         <div className="absolute top-4 left-4 flex flex-col gap-1.5 z-10">
@@ -67,7 +79,14 @@ export function WineCard({ wine, index = 0 }: { wine: Wine; index?: number }) {
           )}
         </div>
 
-        {/* Quick view chip on hover */}
+        <button
+          onClick={(e) => { e.preventDefault(); toggle(wine.slug); }}
+          aria-label={isWished ? "Remove from wishlist" : "Add to wishlist"}
+          className="absolute top-4 right-4 z-10 w-9 h-9 grid place-items-center rounded-full bg-charcoal/60 backdrop-blur border border-white/10 hover:border-gold transition-colors"
+        >
+          <Heart size={14} className={isWished ? "fill-gold text-gold" : "text-cream/80"} />
+        </button>
+
         <div className="absolute inset-x-0 bottom-3 z-10 flex justify-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
           <span className="text-[0.6rem] tracking-[0.3em] uppercase text-charcoal bg-gold/95 backdrop-blur px-4 py-1.5 rounded-full">
             Quick view
@@ -111,10 +130,21 @@ export function WineCard({ wine, index = 0 }: { wine: Wine; index?: number }) {
               Discover
             </Link>
             <button
+              onClick={onAdd}
               aria-label="Add to cart"
-              className="grid place-items-center w-10 h-10 rounded-full bg-gold text-charcoal hover:shadow-[0_10px_30px_-8px_oklch(0.76_0.14_85_/_0.65)] hover:-translate-y-0.5 transition-all"
+              className="relative grid place-items-center w-10 h-10 rounded-full bg-gold text-charcoal hover:shadow-[0_10px_30px_-8px_oklch(0.76_0.14_85_/_0.65)] hover:-translate-y-0.5 transition-all overflow-hidden"
             >
-              <Plus size={16} strokeWidth={2.4} />
+              <AnimatePresence mode="wait">
+                {added ? (
+                  <motion.span key="c" initial={{ scale: 0, rotate: -90 }} animate={{ scale: 1, rotate: 0 }} exit={{ scale: 0 }}>
+                    <Check size={16} strokeWidth={2.6} />
+                  </motion.span>
+                ) : (
+                  <motion.span key="p" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}>
+                    <Plus size={16} strokeWidth={2.4} />
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </button>
           </div>
         </div>

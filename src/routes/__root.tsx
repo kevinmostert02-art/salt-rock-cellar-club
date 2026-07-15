@@ -12,6 +12,8 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import faviconAsset from "@/assets/saltrock-favicon.png.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { CartProvider } from "@/lib/cart";
+import { CartDrawer } from "@/components/cart-drawer";
 
 function NotFoundComponent() {
   return (
@@ -68,6 +70,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Salt Rock Wines — Stellenbosch" },
       { property: "og:description", content: "Handpicked, single-site South African wines from the sundrenched vineyards of Stellenbosch." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Salt Rock Wines" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
@@ -76,6 +79,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              name: "Salt Rock Wines",
+              url: "/",
+              logo: faviconAsset.url,
+              sameAs: ["https://www.instagram.com/saltrockwines"],
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Stellenbosch",
+                addressRegion: "Western Cape",
+                addressCountry: "ZA",
+              },
+            },
+            { "@type": "WebSite", name: "Salt Rock Wines", url: "/" },
+          ],
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -97,7 +124,10 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <CartProvider>
+        <Outlet />
+        <CartDrawer />
+      </CartProvider>
     </QueryClientProvider>
   );
 }

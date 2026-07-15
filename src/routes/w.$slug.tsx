@@ -1,11 +1,13 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { motion } from "motion/react";
+import { useState } from "react";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { Reveal } from "@/components/reveal";
 import { WineCard } from "@/components/wine-card";
 import { wineBySlug, wines } from "@/lib/wines";
-import { Award, Thermometer, ArrowLeft, Share2 } from "lucide-react";
+import { useCart, useWishlist } from "@/lib/cart";
+import { Award, Thermometer, ArrowLeft, Share2, Heart, Plus, Minus, ShoppingBag, Lock, Truck, ShieldCheck, Check } from "lucide-react";
 
 export const Route = createFileRoute("/w/$slug")({
   loader: ({ params }) => {
@@ -13,7 +15,7 @@ export const Route = createFileRoute("/w/$slug")({
     if (!wine) throw notFound();
     return { wine };
   },
-  head: ({ loaderData }) => {
+  head: ({ loaderData, params }) => {
     if (!loaderData) {
       return { meta: [{ title: "Wine not found" }, { name: "robots", content: "noindex" }] };
     }
@@ -25,6 +27,45 @@ export const Route = createFileRoute("/w/$slug")({
         { property: "og:title", content: `${w.name} ${w.vintage}` },
         { property: "og:description", content: w.tasting },
         { property: "og:type", content: "product" },
+        { property: "og:image", content: w.image },
+        { property: "og:url", content: `/w/${params.slug}` },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:image", content: w.image },
+      ],
+      links: [{ rel: "canonical", href: `/w/${params.slug}` }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: `${w.name} ${w.vintage}`,
+            description: w.tasting,
+            image: w.image,
+            sku: w.slug,
+            brand: { "@type": "Brand", name: "Salt Rock Wines" },
+            category: w.type + " Wine",
+            offers: {
+              "@type": "Offer",
+              price: w.price,
+              priceCurrency: "ZAR",
+              availability: "https://schema.org/InStock",
+              url: `/w/${w.slug}`,
+            },
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "/" },
+              { "@type": "ListItem", position: 2, name: "The Cellar", item: "/wines" },
+              { "@type": "ListItem", position: 3, name: w.name, item: `/w/${w.slug}` },
+            ],
+          }),
+        },
       ],
     };
   },
@@ -108,6 +149,20 @@ function CellarTimeline({ vintage }: { vintage: string }) {
 function WinePage() {
   const { wine } = Route.useLoaderData();
   const related = wines.filter((w) => w.slug !== wine.slug && w.type === wine.type).slice(0, 3);
+  const { add, setOpen } = useCart();
+  const { has, toggle } = useWishlist();
+  const isWished = has(wine.slug);
+  const [qty, setQty] = useState(1);
+  const [added, setAdded] = useState(false);
+  const [zoom, setZoom] = useState(false);
+
+  const region = wine.terroir.split(/[.,]/)[0]?.trim() ?? "South Africa";
+
+  function onAdd() {
+    add(wine.slug, qty);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1600);
+  }
 
   return (
     <div className="min-h-screen bg-charcoal text-cream">
@@ -127,12 +182,18 @@ function WinePage() {
                 <div className="absolute top-1/4 left-1/2 -translate-x-1/2 h-[70%] w-[70%] rounded-full bg-gold/20 blur-[100px]" />
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-32 w-[70%] rounded-full bg-burgundy/40 blur-[80px]" />
               </div>
-              <div className="bottle-glow relative aspect-[3/4] grid place-items-center">
-                <img
+              <div
+                className="bottle-glow relative aspect-[3/4] grid place-items-center overflow-hidden cursor-zoom-in"
+                onClick={() => setZoom((v) => !v)}
+                onMouseLeave={() => setZoom(false)}
+              >
+                <motion.img
                   src={wine.image}
                   alt={wine.name}
                   width={800}
                   height={1200}
+                  animate={{ scale: zoom ? 1.6 : 1 }}
+                  transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
                   className="relative h-full w-full object-contain p-6 md:p-10 animate-bottle-float"
                 />
               </div>
@@ -143,6 +204,16 @@ function WinePage() {
             <p className="eyebrow">{wine.range} · {wine.vintage}</p>
             <h1 className="mt-6 text-5xl md:text-[4.5rem] font-display leading-[0.98] tracking-[-0.02em]">{wine.name}</h1>
             <p className="mt-3 text-lg text-cream/65 font-display italic">{wine.varietal}</p>
+
+            {/* Chip strip */}
+            <div className="mt-6 flex flex-wrap gap-2 text-[0.6rem] tracking-[0.24em] uppercase">
+              <Chip label="Region" value={region.length > 32 ? region.slice(0, 32) + "…" : region} />
+              <Chip label="Grape" value={wine.varietal} />
+              <Chip label="Alc" value={wine.technical.alcohol} />
+              <Chip label="Vintage" value={wine.vintage} />
+              <Chip label="Country" value="South Africa" />
+              <Chip label="Status" value="In stock" accent />
+            </div>
 
             {wine.awards && wine.awards.length > 0 && (
               <div className="mt-6 flex flex-wrap gap-2">
@@ -193,17 +264,40 @@ function WinePage() {
               </div>
             </div>
 
-            <div className="mt-12 pt-8 border-t border-white/8 flex flex-wrap items-center gap-6">
-              <div>
-                <p className="text-[0.6rem] tracking-[0.3em] uppercase text-muted-foreground">Price per bottle</p>
-                <p className="text-5xl font-display text-gradient-gold mt-2 leading-none">R {wine.price}</p>
+            <div className="mt-12 pt-8 border-t border-white/8">
+              <div className="flex flex-wrap items-end gap-6">
+                <div>
+                  <p className="text-[0.6rem] tracking-[0.3em] uppercase text-muted-foreground">Price per bottle</p>
+                  <p className="text-5xl font-display text-gradient-gold mt-2 leading-none">R {wine.price}</p>
+                </div>
               </div>
-              <div className="flex-1 flex flex-wrap gap-3 justify-end">
-                <button className="btn-gold">Add to cart</button>
-                <button className="btn-ghost-gold">Quick buy</button>
-                <button className="w-12 h-12 border border-white/15 rounded-full grid place-items-center hover:border-gold hover:text-gold transition-colors" aria-label="Share">
+
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <div className="flex items-center border border-white/15 rounded-full">
+                  <button onClick={() => setQty(Math.max(1, qty - 1))} aria-label="Decrease" className="w-11 h-11 grid place-items-center hover:text-gold"><Minus size={14} /></button>
+                  <span className="w-8 text-center">{qty}</span>
+                  <button onClick={() => setQty(qty + 1)} aria-label="Increase" className="w-11 h-11 grid place-items-center hover:text-gold"><Plus size={14} /></button>
+                </div>
+                <button onClick={onAdd} className="btn-gold btn-shimmer">
+                  {added ? (<><Check size={14} /> Added</>) : (<><ShoppingBag size={14} /> Add to cart</>)}
+                </button>
+                <button onClick={() => { add(wine.slug, qty); setOpen(true); }} className="btn-ghost-gold">Quick buy</button>
+                <button
+                  onClick={() => toggle(wine.slug)}
+                  aria-label={isWished ? "Remove from wishlist" : "Add to wishlist"}
+                  className="w-12 h-12 border border-white/15 rounded-full grid place-items-center hover:border-gold hover:text-gold transition-colors"
+                >
+                  <Heart size={14} className={isWished ? "fill-gold text-gold" : ""} />
+                </button>
+                <button aria-label="Share" className="w-12 h-12 border border-white/15 rounded-full grid place-items-center hover:border-gold hover:text-gold transition-colors">
                   <Share2 size={14} />
                 </button>
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-[0.6rem] tracking-[0.28em] uppercase text-cream/55">
+                <span className="flex items-center gap-1.5"><Lock size={11} className="text-gold" /> Secure Checkout</span>
+                <span className="flex items-center gap-1.5"><Truck size={11} className="text-gold" /> Ships in 24h · 2–4 day delivery</span>
+                <span className="flex items-center gap-1.5"><ShieldCheck size={11} className="text-gold" /> Authenticity Guaranteed</span>
               </div>
             </div>
           </Reveal>
@@ -256,7 +350,6 @@ function WinePage() {
           </div>
         </section>
 
-
         {related.length > 0 && (
           <section className="container-luxe py-24 md:py-32">
             <Reveal><p className="eyebrow">If you love this</p></Reveal>
@@ -273,5 +366,14 @@ function WinePage() {
       </main>
       <SiteFooter />
     </div>
+  );
+}
+
+function Chip({ label, value, accent }: { label: string; value: string; accent?: boolean }) {
+  return (
+    <span className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border ${accent ? "border-gold/50 text-gold" : "border-white/15 text-cream/80"}`}>
+      <span className="text-cream/45 tracking-[0.28em]">{label}</span>
+      <span className="tracking-[0.18em]">{value}</span>
+    </span>
   );
 }

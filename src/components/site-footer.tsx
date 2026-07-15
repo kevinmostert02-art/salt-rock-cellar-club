@@ -105,7 +105,7 @@ export function SiteFooter() {
           <p className="eyebrow mb-5">Shop</p>
           <ul className="space-y-3 text-sm text-cream/75">
             <li><Link to="/wines" className="hover:text-gold transition-colors">The Cellar</Link></li>
-            <li><Link to="/wines" className="hover:text-gold transition-colors" search={{}}>Stand Alone</Link></li>
+            <li><Link to="/wines" className="hover:text-gold transition-colors">Stand Alone</Link></li>
             <li><Link to="/wines" className="hover:text-gold transition-colors">Climate Range</Link></li>
             <li><Link to="/wines" className="hover:text-gold transition-colors">Lifestyle</Link></li>
           </ul>

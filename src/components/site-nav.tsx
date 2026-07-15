@@ -4,11 +4,13 @@ import { Menu, X, ShoppingBag } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 import logoAsset from "@/assets/saltrock-logo.webp.asset.json";
+import { useCart } from "@/lib/cart";
 
 const nav = [
   { to: "/wines", label: "Wines" },
   { to: "/sommelier", label: "Sommelier" },
   { to: "/club", label: "Wine Club" },
+  { to: "/guide", label: "Guide" },
   { to: "/story", label: "Story" },
 ];
 
@@ -17,6 +19,7 @@ export function SiteNav({ transparentOnTop = true }: { transparentOnTop?: boolea
   const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
   const lastY = useRef(0);
+  const { count, setOpen: setCartOpen } = useCart();
 
   useEffect(() => {
     const onScroll = () => {
@@ -38,7 +41,7 @@ export function SiteNav({ transparentOnTop = true }: { transparentOnTop?: boolea
       transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
       className="fixed inset-x-0 top-0 z-50"
     >
-      <div className={`container-luxe pt-4 md:pt-5 transition-all duration-500`}>
+      <div className="container-luxe pt-4 md:pt-5 transition-all duration-500">
         <div
           className={`flex h-16 md:h-[68px] items-center justify-between px-4 md:px-7 transition-all duration-500 ${
             scrolled
@@ -62,7 +65,7 @@ export function SiteNav({ transparentOnTop = true }: { transparentOnTop?: boolea
             </span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-9">
+          <nav className="hidden md:flex items-center gap-8">
             {nav.map((n) => (
               <Link
                 key={n.to}
@@ -75,29 +78,36 @@ export function SiteNav({ transparentOnTop = true }: { transparentOnTop?: boolea
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center gap-4">
-            <Link
-              to="/wines"
-              className="text-[0.68rem] tracking-[0.3em] uppercase text-cream/85 hover:text-gold transition-colors"
-            >
-              Shop
-            </Link>
+          <div className="flex items-center gap-2 md:gap-4">
             <button
-              className="relative flex items-center gap-2 text-[0.68rem] tracking-[0.3em] uppercase text-cream/85 hover:text-gold transition-colors"
-              aria-label="Cart"
+              onClick={() => setCartOpen(true)}
+              className="relative flex items-center gap-2 text-[0.68rem] tracking-[0.3em] uppercase text-cream/85 hover:text-gold transition-colors px-3 py-2"
+              aria-label={`Cart, ${count} items`}
             >
-              <ShoppingBag size={14} />
-              <span>0</span>
+              <ShoppingBag size={16} />
+              <AnimatePresence>
+                {count > 0 && (
+                  <motion.span
+                    key={count}
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    exit={{ scale: 0 }}
+                    className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-gold text-charcoal text-[10px] font-semibold grid place-items-center tracking-normal"
+                  >
+                    {count}
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            </button>
+
+            <button
+              className="md:hidden text-cream p-2 -mr-2"
+              onClick={() => setOpen((v) => !v)}
+              aria-label="Menu"
+            >
+              {open ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
-
-          <button
-            className="md:hidden text-cream p-2 -mr-2"
-            onClick={() => setOpen((v) => !v)}
-            aria-label="Menu"
-          >
-            {open ? <X size={22} /> : <Menu size={22} />}
-          </button>
         </div>
       </div>
 

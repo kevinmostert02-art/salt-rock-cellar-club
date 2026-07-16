@@ -18,19 +18,34 @@ import lifestyleAsset from "@/assets/ranges/lifestyle-range.png.asset.json";
 const bottleImg = bottleAsset.url;
 
 const founders = [
+  { img: founder1Asset.url },
+  { img: founder2Asset.url },
+];
+
+const team = [
   {
     img: founder1Asset.url,
-    role: "Co-Founder · Winemaker",
-    name: "The Winemaker",
-    bio: "A restless nomad of the Cape wine industry, chasing single vineyards from Elgin to the Hemel-en-Aarde Ridge in pursuit of wines that speak honestly of their season.",
+    name: "Alexander Grier",
+    role: "Winemaker",
+    bio: [
+      "Having pursued BSc Food Science (Bio) at Stellenbosch University, I embarked on my wine journey by partaking in harvests around the world. My experience includes working at Villiera Wines in South Africa, as well as in the USA, Australia, Tasmania, and Domaine Grier in France.",
+      "Following this, I briefly served as a consulting winemaker at Highlands Road Estate in Elgin and then spent four vintages as an assistant winemaker at La Vierge in the Hemel-en-Aarde Valley.",
+      "I later transitioned to Villiera Wines as the full-time Cap Classique winemaker until 2023, and I now dedicate my focus to Salt Rock Wines alongside providing Cap Classique consulting.",
+    ],
   },
   {
     img: founder2Asset.url,
-    role: "Co-Founder · Viticulturist",
-    name: "The Grower",
-    bio: "Guardian of the vines. Decades spent reading the soils and skies of Stellenbosch, coaxing balance from bush vines that others have long overlooked.",
+    name: "Rudolph Steenkamp",
+    role: "Winemaker",
+    bio: [
+      "My winemaking journey started by a click of a mouse in the middle of Midwest USA, after having a brainwave to go and study something. I knew it must be in Agriculture so enrolled at Elsenburg in Stellenbosch thinking winemaking must be a great career. Once arriving in Stellenbosch for the first time I absolutely loved it, doing wine tasting and soaking up the student life.",
+      "After graduation my first harvest was at Tokara in Stellenbosch, followed by a few international harvests in France and Australia. Subsequently, I was fortunate to become assistant winemaker at Welmoed Cellar in 2013.",
+      "I then progressed to Groot Constantia, serving as an assistant winemaker for four harvests, before taking up the position of winemaker and viticulturist at Haskell Vineyards in Stellenbosch till the end of 2022.",
+      "After working for the MAN for so long and realising that this kite is not going to fly anymore, myself and Xander partnered up to start our own brand and destiny.",
+    ],
   },
 ];
+
 
 const ranges = [
   {

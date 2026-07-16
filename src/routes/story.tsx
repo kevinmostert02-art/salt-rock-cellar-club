@@ -201,17 +201,15 @@ function StoryPage() {
         {chapters.map((c, i) => (
           <section key={c.n} className="border-t border-border">
             <div className={`container-luxe py-20 md:py-32 grid md:grid-cols-12 gap-10 md:gap-16 items-center ${i % 2 ? "md:[&>*:first-child]:order-2" : ""}`}>
-              <Reveal>
-                <div className="md:col-span-7 relative aspect-[5/4] overflow-hidden">
+              <Reveal className="md:col-span-7">
+                <div className="relative aspect-[5/4] overflow-hidden">
                   <img src={c.img} alt={c.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
                 </div>
               </Reveal>
-              <Reveal delay={0.15}>
-                <div className="md:col-span-5">
-                  <p className="text-[0.7rem] tracking-[0.35em] uppercase text-gold">Chapter {c.n}</p>
-                  <h2 className="mt-4 text-4xl md:text-6xl font-display leading-[1]">{c.title}</h2>
-                  <p className="mt-6 text-lg text-cream/75 leading-[1.9]">{c.body}</p>
-                </div>
+              <Reveal delay={0.15} className="md:col-span-5">
+                <p className="text-[0.7rem] tracking-[0.35em] uppercase text-gold">Chapter {c.n}</p>
+                <h2 className="mt-4 text-4xl md:text-6xl font-display leading-[1]">{c.title}</h2>
+                <p className="mt-6 text-lg text-cream/75 leading-[1.9]">{c.body}</p>
               </Reveal>
             </div>
           </section>

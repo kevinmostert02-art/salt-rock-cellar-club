@@ -81,8 +81,8 @@ function GuidePage() {
         {chapters.map((c, i) => (
           <section key={c.title} className="py-24 md:py-32 border-t border-white/6">
             <div className={`container-luxe grid md:grid-cols-12 gap-12 md:gap-16 items-center ${i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""}`}>
-              <Reveal>
-                <div className="md:col-span-5 relative aspect-[4/5] overflow-hidden">
+              <Reveal className="md:col-span-5">
+                <div className="relative aspect-[4/5] overflow-hidden">
                   <img src={c.img} alt={c.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-[2000ms] hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal/50 to-transparent" />
                   <p className="absolute top-6 left-6 eyebrow">{c.kicker}</p>

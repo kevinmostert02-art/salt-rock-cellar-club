@@ -11,6 +11,7 @@ const nav = [
   { to: "/sommelier", label: "Sommelier" },
   { to: "/club", label: "Wine Club" },
   { to: "/guide", label: "Guide" },
+  { to: "/stockists", label: "Stockists" },
   { to: "/story", label: "Story" },
 ];
 

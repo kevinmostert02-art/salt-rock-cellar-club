@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WinesRouteImport } from './routes/wines'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as StoryRouteImport } from './routes/story'
+import { Route as StockistsRouteImport } from './routes/stockists'
 import { Route as SommelierRouteImport } from './routes/sommelier'
 import { Route as ShippingRouteImport } from './routes/shipping'
 import { Route as ReturnsRouteImport } from './routes/returns'
@@ -35,6 +36,11 @@ const TermsRoute = TermsRouteImport.update({
 const StoryRoute = StoryRouteImport.update({
   id: '/story',
   path: '/story',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StockistsRoute = StockistsRouteImport.update({
+  id: '/stockists',
+  path: '/stockists',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SommelierRoute = SommelierRouteImport.update({
@@ -92,6 +98,7 @@ export interface FileRoutesByFullPath {
   '/returns': typeof ReturnsRoute
   '/shipping': typeof ShippingRoute
   '/sommelier': typeof SommelierRoute
+  '/stockists': typeof StockistsRoute
   '/story': typeof StoryRoute
   '/terms': typeof TermsRoute
   '/wines': typeof WinesRoute
@@ -106,6 +113,7 @@ export interface FileRoutesByTo {
   '/returns': typeof ReturnsRoute
   '/shipping': typeof ShippingRoute
   '/sommelier': typeof SommelierRoute
+  '/stockists': typeof StockistsRoute
   '/story': typeof StoryRoute
   '/terms': typeof TermsRoute
   '/wines': typeof WinesRoute
@@ -121,6 +129,7 @@ export interface FileRoutesById {
   '/returns': typeof ReturnsRoute
   '/shipping': typeof ShippingRoute
   '/sommelier': typeof SommelierRoute
+  '/stockists': typeof StockistsRoute
   '/story': typeof StoryRoute
   '/terms': typeof TermsRoute
   '/wines': typeof WinesRoute
@@ -137,6 +146,7 @@ export interface FileRouteTypes {
     | '/returns'
     | '/shipping'
     | '/sommelier'
+    | '/stockists'
     | '/story'
     | '/terms'
     | '/wines'
@@ -151,6 +161,7 @@ export interface FileRouteTypes {
     | '/returns'
     | '/shipping'
     | '/sommelier'
+    | '/stockists'
     | '/story'
     | '/terms'
     | '/wines'
@@ -165,6 +176,7 @@ export interface FileRouteTypes {
     | '/returns'
     | '/shipping'
     | '/sommelier'
+    | '/stockists'
     | '/story'
     | '/terms'
     | '/wines'
@@ -180,6 +192,7 @@ export interface RootRouteChildren {
   ReturnsRoute: typeof ReturnsRoute
   ShippingRoute: typeof ShippingRoute
   SommelierRoute: typeof SommelierRoute
+  StockistsRoute: typeof StockistsRoute
   StoryRoute: typeof StoryRoute
   TermsRoute: typeof TermsRoute
   WinesRoute: typeof WinesRoute
@@ -207,6 +220,13 @@ declare module '@tanstack/react-router' {
       path: '/story'
       fullPath: '/story'
       preLoaderRoute: typeof StoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/stockists': {
+      id: '/stockists'
+      path: '/stockists'
+      fullPath: '/stockists'
+      preLoaderRoute: typeof StockistsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sommelier': {
@@ -284,6 +304,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReturnsRoute: ReturnsRoute,
   ShippingRoute: ShippingRoute,
   SommelierRoute: SommelierRoute,
+  StockistsRoute: StockistsRoute,
   StoryRoute: StoryRoute,
   TermsRoute: TermsRoute,
   WinesRoute: WinesRoute,
@@ -292,13 +313,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

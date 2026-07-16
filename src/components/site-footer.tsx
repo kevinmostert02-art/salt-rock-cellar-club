@@ -117,6 +117,7 @@ export function SiteFooter() {
             <li><Link to="/sommelier" className="hover:text-gold transition-colors">Sommelier</Link></li>
             <li><Link to="/club" className="hover:text-gold transition-colors">Wine Club</Link></li>
             <li><Link to="/guide" className="hover:text-gold transition-colors">The Guide</Link></li>
+            <li><Link to="/stockists" className="hover:text-gold transition-colors">Stockists</Link></li>
             <li><Link to="/story" className="hover:text-gold transition-colors">Our Story</Link></li>
           </ul>
         </div>

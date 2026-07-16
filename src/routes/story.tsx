@@ -166,8 +166,8 @@ function StoryPage() {
                     i % 2 ? "md:[&>*:first-child]:order-2" : ""
                   }`}
                 >
-                  <Reveal>
-                    <div className="md:col-span-6 relative aspect-[4/5] md:aspect-[5/6] overflow-hidden bg-cream/95 flex items-center justify-center p-8 md:p-14">
+                  <Reveal className="md:col-span-6">
+                    <div className="relative aspect-[4/5] md:aspect-[5/6] overflow-hidden bg-cream/95 flex items-center justify-center p-8 md:p-14">
                       <img
                         src={r.img}
                         alt={`${r.name} Range`}
@@ -176,22 +176,20 @@ function StoryPage() {
                       />
                     </div>
                   </Reveal>
-                  <Reveal delay={0.15}>
-                    <div className="md:col-span-6">
-                      <p className="text-[0.7rem] tracking-[0.35em] uppercase text-gold">
-                        Range · 0{i + 1}
-                      </p>
-                      <h3 className="mt-4 text-4xl md:text-6xl font-display leading-[1]">
-                        {r.name}
-                      </h3>
-                      <p className="mt-6 text-lg text-cream/75 leading-[1.9]">{r.body}</p>
-                      <Link
-                        to="/wines"
-                        className="mt-8 inline-flex items-center gap-2 text-[0.7rem] tracking-[0.35em] uppercase text-gold link-underline"
-                      >
-                        Explore the range <ArrowRight size={14} />
-                      </Link>
-                    </div>
+                  <Reveal delay={0.15} className="md:col-span-6">
+                    <p className="text-[0.7rem] tracking-[0.35em] uppercase text-gold">
+                      Range · 0{i + 1}
+                    </p>
+                    <h3 className="mt-4 text-4xl md:text-6xl font-display leading-[1]">
+                      {r.name}
+                    </h3>
+                    <p className="mt-6 text-lg text-cream/75 leading-[1.9]">{r.body}</p>
+                    <Link
+                      to="/wines"
+                      className="mt-8 inline-flex items-center gap-2 text-[0.7rem] tracking-[0.35em] uppercase text-gold link-underline"
+                    >
+                      Explore the range <ArrowRight size={14} />
+                    </Link>
                   </Reveal>
                 </div>
               ))}
@@ -203,17 +201,15 @@ function StoryPage() {
         {chapters.map((c, i) => (
           <section key={c.n} className="border-t border-border">
             <div className={`container-luxe py-20 md:py-32 grid md:grid-cols-12 gap-10 md:gap-16 items-center ${i % 2 ? "md:[&>*:first-child]:order-2" : ""}`}>
-              <Reveal>
-                <div className="md:col-span-7 relative aspect-[5/4] overflow-hidden">
+              <Reveal className="md:col-span-7">
+                <div className="relative aspect-[5/4] overflow-hidden">
                   <img src={c.img} alt={c.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
                 </div>
               </Reveal>
-              <Reveal delay={0.15}>
-                <div className="md:col-span-5">
-                  <p className="text-[0.7rem] tracking-[0.35em] uppercase text-gold">Chapter {c.n}</p>
-                  <h2 className="mt-4 text-4xl md:text-6xl font-display leading-[1]">{c.title}</h2>
-                  <p className="mt-6 text-lg text-cream/75 leading-[1.9]">{c.body}</p>
-                </div>
+              <Reveal delay={0.15} className="md:col-span-5">
+                <p className="text-[0.7rem] tracking-[0.35em] uppercase text-gold">Chapter {c.n}</p>
+                <h2 className="mt-4 text-4xl md:text-6xl font-display leading-[1]">{c.title}</h2>
+                <p className="mt-6 text-lg text-cream/75 leading-[1.9]">{c.body}</p>
               </Reveal>
             </div>
           </section>

@@ -18,19 +18,34 @@ import lifestyleAsset from "@/assets/ranges/lifestyle-range.png.asset.json";
 const bottleImg = bottleAsset.url;
 
 const founders = [
+  { img: founder1Asset.url },
+  { img: founder2Asset.url },
+];
+
+const team = [
   {
     img: founder1Asset.url,
-    role: "Co-Founder · Winemaker",
-    name: "The Winemaker",
-    bio: "A restless nomad of the Cape wine industry, chasing single vineyards from Elgin to the Hemel-en-Aarde Ridge in pursuit of wines that speak honestly of their season.",
+    name: "Alexander Grier",
+    role: "Winemaker",
+    bio: [
+      "Having pursued BSc Food Science (Bio) at Stellenbosch University, I embarked on my wine journey by partaking in harvests around the world. My experience includes working at Villiera Wines in South Africa, as well as in the USA, Australia, Tasmania, and Domaine Grier in France.",
+      "Following this, I briefly served as a consulting winemaker at Highlands Road Estate in Elgin and then spent four vintages as an assistant winemaker at La Vierge in the Hemel-en-Aarde Valley.",
+      "I later transitioned to Villiera Wines as the full-time Cap Classique winemaker until 2023, and I now dedicate my focus to Salt Rock Wines alongside providing Cap Classique consulting.",
+    ],
   },
   {
     img: founder2Asset.url,
-    role: "Co-Founder · Viticulturist",
-    name: "The Grower",
-    bio: "Guardian of the vines. Decades spent reading the soils and skies of Stellenbosch, coaxing balance from bush vines that others have long overlooked.",
+    name: "Rudolph Steenkamp",
+    role: "Winemaker",
+    bio: [
+      "My winemaking journey started by a click of a mouse in the middle of Midwest USA, after having a brainwave to go and study something. I knew it must be in Agriculture so enrolled at Elsenburg in Stellenbosch thinking winemaking must be a great career. Once arriving in Stellenbosch for the first time I absolutely loved it, doing wine tasting and soaking up the student life.",
+      "After graduation my first harvest was at Tokara in Stellenbosch, followed by a few international harvests in France and Australia. Subsequently, I was fortunate to become assistant winemaker at Welmoed Cellar in 2013.",
+      "I then progressed to Groot Constantia, serving as an assistant winemaker for four harvests, before taking up the position of winemaker and viticulturist at Haskell Vineyards in Stellenbosch till the end of 2022.",
+      "After working for the MAN for so long and realising that this kite is not going to fly anymore, myself and Xander partnered up to start our own brand and destiny.",
+    ],
   },
 ];
+
 
 const ranges = [
   {
@@ -95,22 +110,53 @@ function StoryPage() {
           </div>
         </section>
 
-        {/* Founders */}
+        {/* Founders portraits */}
         <section className="border-b border-border">
           <div className="container-luxe py-20 md:py-32">
             <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16">
               {founders.map((f, i) => (
-                <Reveal key={f.name} delay={i * 0.12}>
+                <Reveal key={i} delay={i * 0.12}>
                   <figure className="group">
                     <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 overflow-hidden rounded-full bg-charcoal/50 ring-1 ring-cream/10 shadow-2xl">
                       <img
                         src={f.img}
-                        alt={f.name}
+                        alt=""
                         loading="lazy"
                         className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-105"
                       />
                     </div>
                   </figure>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Meet the team */}
+        <section className="border-b border-border">
+          <div className="container-luxe py-24 md:py-32">
+            <div className="text-center max-w-2xl mx-auto">
+              <Reveal><p className="eyebrow">Meet our passionate team</p></Reveal>
+              <Reveal delay={0.1}>
+                <h2 className="mt-6 text-4xl md:text-6xl font-display leading-[1.05]">
+                  The Faces Behind <em className="text-gold not-italic">Salt Rock Wines</em>
+                </h2>
+              </Reveal>
+            </div>
+            <div className="mt-16 md:mt-24 grid gap-16 md:gap-20 md:grid-cols-2">
+              {team.map((m, i) => (
+                <Reveal key={m.name} delay={i * 0.1}>
+                  <article className="flex flex-col items-center md:items-start text-center md:text-left">
+                    <div className="relative w-40 h-40 md:w-48 md:h-48 overflow-hidden rounded-full ring-1 ring-gold/25 shadow-2xl">
+                      <img src={m.img} alt={m.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+                    </div>
+                    <h3 className="mt-8 text-2xl md:text-3xl font-display tracking-wide">{m.name}</h3>
+                    <p className="mt-2 text-[0.7rem] tracking-[0.35em] uppercase text-gold">{m.role}</p>
+                    <div className="mt-6 hairline w-16" />
+                    <div className="mt-6 space-y-5 text-[0.98rem] md:text-base text-cream/75 leading-[1.85]">
+                      {m.bio.map((p, k) => <p key={k}>{p}</p>)}
+                    </div>
+                  </article>
                 </Reveal>
               ))}
             </div>

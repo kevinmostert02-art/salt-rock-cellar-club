@@ -166,8 +166,8 @@ function StoryPage() {
                     i % 2 ? "md:[&>*:first-child]:order-2" : ""
                   }`}
                 >
-                  <Reveal>
-                    <div className="md:col-span-6 relative aspect-[4/5] md:aspect-[5/6] overflow-hidden bg-cream/95 flex items-center justify-center p-8 md:p-14">
+                  <Reveal className="md:col-span-6">
+                    <div className="relative aspect-[4/5] md:aspect-[5/6] overflow-hidden bg-cream/95 flex items-center justify-center p-8 md:p-14">
                       <img
                         src={r.img}
                         alt={`${r.name} Range`}
@@ -176,22 +176,20 @@ function StoryPage() {
                       />
                     </div>
                   </Reveal>
-                  <Reveal delay={0.15}>
-                    <div className="md:col-span-6">
-                      <p className="text-[0.7rem] tracking-[0.35em] uppercase text-gold">
-                        Range · 0{i + 1}
-                      </p>
-                      <h3 className="mt-4 text-4xl md:text-6xl font-display leading-[1]">
-                        {r.name}
-                      </h3>
-                      <p className="mt-6 text-lg text-cream/75 leading-[1.9]">{r.body}</p>
-                      <Link
-                        to="/wines"
-                        className="mt-8 inline-flex items-center gap-2 text-[0.7rem] tracking-[0.35em] uppercase text-gold link-underline"
-                      >
-                        Explore the range <ArrowRight size={14} />
-                      </Link>
-                    </div>
+                  <Reveal delay={0.15} className="md:col-span-6">
+                    <p className="text-[0.7rem] tracking-[0.35em] uppercase text-gold">
+                      Range · 0{i + 1}
+                    </p>
+                    <h3 className="mt-4 text-4xl md:text-6xl font-display leading-[1]">
+                      {r.name}
+                    </h3>
+                    <p className="mt-6 text-lg text-cream/75 leading-[1.9]">{r.body}</p>
+                    <Link
+                      to="/wines"
+                      className="mt-8 inline-flex items-center gap-2 text-[0.7rem] tracking-[0.35em] uppercase text-gold link-underline"
+                    >
+                      Explore the range <ArrowRight size={14} />
+                    </Link>
                   </Reveal>
                 </div>
               ))}

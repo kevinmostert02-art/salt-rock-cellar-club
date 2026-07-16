@@ -110,22 +110,53 @@ function StoryPage() {
           </div>
         </section>
 
-        {/* Founders */}
+        {/* Founders portraits */}
         <section className="border-b border-border">
           <div className="container-luxe py-20 md:py-32">
             <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16">
               {founders.map((f, i) => (
-                <Reveal key={f.name} delay={i * 0.12}>
+                <Reveal key={i} delay={i * 0.12}>
                   <figure className="group">
                     <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 overflow-hidden rounded-full bg-charcoal/50 ring-1 ring-cream/10 shadow-2xl">
                       <img
                         src={f.img}
-                        alt={f.name}
+                        alt=""
                         loading="lazy"
                         className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-105"
                       />
                     </div>
                   </figure>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Meet the team */}
+        <section className="border-b border-border">
+          <div className="container-luxe py-24 md:py-32">
+            <div className="text-center max-w-2xl mx-auto">
+              <Reveal><p className="eyebrow">Meet our passionate team</p></Reveal>
+              <Reveal delay={0.1}>
+                <h2 className="mt-6 text-4xl md:text-6xl font-display leading-[1.05]">
+                  The Faces Behind <em className="text-gold not-italic">Salt Rock Wines</em>
+                </h2>
+              </Reveal>
+            </div>
+            <div className="mt-16 md:mt-24 grid gap-16 md:gap-20 md:grid-cols-2">
+              {team.map((m, i) => (
+                <Reveal key={m.name} delay={i * 0.1}>
+                  <article className="flex flex-col items-center md:items-start text-center md:text-left">
+                    <div className="relative w-40 h-40 md:w-48 md:h-48 overflow-hidden rounded-full ring-1 ring-gold/25 shadow-2xl">
+                      <img src={m.img} alt={m.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+                    </div>
+                    <h3 className="mt-8 text-2xl md:text-3xl font-display tracking-wide">{m.name}</h3>
+                    <p className="mt-2 text-[0.7rem] tracking-[0.35em] uppercase text-gold">{m.role}</p>
+                    <div className="mt-6 hairline w-16" />
+                    <div className="mt-6 space-y-5 text-[0.98rem] md:text-base text-cream/75 leading-[1.85]">
+                      {m.bio.map((p, k) => <p key={k}>{p}</p>)}
+                    </div>
+                  </article>
                 </Reveal>
               ))}
             </div>

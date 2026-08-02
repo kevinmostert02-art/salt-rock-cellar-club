@@ -24,7 +24,7 @@ const founders = [
 
 const team = [
   {
-    img: founder1Asset.url,
+    img: founder2Asset.url,
     name: "Alexander Grier",
     role: "Winemaker",
     bio: [
@@ -34,7 +34,7 @@ const team = [
     ],
   },
   {
-    img: founder2Asset.url,
+    img: founder1Asset.url,
     name: "Rudolph Steenkamp",
     role: "Winemaker",
     bio: [

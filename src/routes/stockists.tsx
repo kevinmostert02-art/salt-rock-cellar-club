@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { Reveal } from "@/components/reveal";
@@ -7,12 +7,12 @@ import { ExternalLink, MapPin, Utensils, Wine } from "lucide-react";
 type Stockist = { name: string; region?: string; url?: string; note?: string };
 
 const distributors: Stockist[] = [
-  { name: "Pangea Selections", region: "National · Importer", url: "https://pangeaselections.com" },
+  { name: "Pangea Selections", region: "National Â· Importer", url: "https://pangeaselections.com" },
   { name: "Nekter Wines", region: "Wine Importers", url: "https://nekterwines.com" },
   { name: "The Vineyard Connection", region: "Stellenbosch", url: "https://vineyardconnection.co.za" },
   { name: "Dry Dock Liquor", region: "Purveyors of Local & Imported Liquor", url: "https://drydock.co.za" },
   { name: "Wine Concepts", region: "Kloof Street, Cape Town", url: "https://wineconcepts.co.za" },
-  { name: "Wine Village Hermanus", region: "Hermanus · Since 1998", url: "https://wine-village.co.za" },
+  { name: "Wine Village Hermanus", region: "Hermanus Â· Since 1998", url: "https://wine-village.co.za" },
   { name: "Wine & Co", region: "The Coolest Wine Shop", url: "https://wineandco.co.za" },
   { name: "Elephants Corner", region: "Wine Merchants", url: "https://elephantscorner.co.za" },
   { name: "NorthEast Wines & Spirits", region: "Wines & Spirits", url: "https://northeastwines.co.za" },
@@ -22,7 +22,7 @@ const distributors: Stockist[] = [
 const restaurants: Stockist[] = [
   { name: "Boma on Bree", region: "Bree Street, Cape Town", note: "The Firm Hospitality" },
   { name: "Bouchon Bistro & Wine Bar", region: "Cape Town" },
-  { name: "Constantia Wine and Craft", region: "Constantia · Est. 2021" },
+  { name: "Constantia Wine and Craft", region: "Constantia Â· Est. 2021" },
   { name: "Novo Pizza + Wine", region: "Cape Town" },
   { name: "Publik Wine Bar", region: "Cape Town" },
   { name: "Silk Restaurant", region: "Asian Fusion" },
@@ -50,7 +50,7 @@ function Card({ s, icon: Icon }: { s: Stockist; icon: typeof Wine }) {
       {s.note && <p className="mt-3 text-sm text-cream/60 italic">{s.note}</p>}
       {s.url && (
         <span className="mt-6 pt-6 border-t border-white/8 text-[0.65rem] tracking-[0.3em] uppercase text-gold/90 group-hover:text-gold transition-colors">
-          Visit website →
+          Visit website â†’
         </span>
       )}
     </div>
@@ -104,8 +104,8 @@ function Section({
 export const Route = createFileRoute("/stockists")({
   head: () => ({
     meta: [
-      { title: "Stockists & Distributors — Salt Rock Wines" },
-      { name: "description", content: "Find Salt Rock Wines at leading South African distributors, wine merchants and restaurants — from Cape Town to Hermanus." },
+      { title: "Stockists & Distributors â€” Salt Rock Wines" },
+      { name: "description", content: "Find Salt Rock Wines at leading South African distributors, wine merchants and restaurants â€” from Cape Town to Hermanus." },
       { property: "og:title", content: "Where to find Salt Rock Wines" },
       { property: "og:description", content: "Our distributors, wine merchants and restaurant partners across South Africa." },
     ],
@@ -131,7 +131,7 @@ function StockistsPage() {
             </Reveal>
             <Reveal delay={0.2}>
               <p className="mt-8 max-w-2xl text-base md:text-lg text-cream/70 leading-relaxed">
-                From boutique wine merchants in Cape Town to celebrated restaurants along the coast — a curated network of partners who pour Salt Rock with pride.
+                From boutique wine merchants in Cape Town to celebrated restaurants along the coast â€” a curated network of partners who pour Salt Rock with pride.
               </p>
             </Reveal>
           </div>
@@ -150,7 +150,7 @@ function StockistsPage() {
         <Section
           eyebrow="On the Menu"
           title={<>Restaurant <em className="text-gold not-italic">Partners</em></>}
-          lede="Enjoy a glass of Salt Rock at these celebrated tables — thoughtfully paired by chefs and sommeliers we admire."
+          lede="Enjoy a glass of Salt Rock at these celebrated tables â€” thoughtfully paired by chefs and sommeliers we admire."
           items={restaurants}
           icon={Utensils}
         />
@@ -164,12 +164,12 @@ function StockistsPage() {
             </Reveal>
             <Reveal delay={0.2}>
               <p className="mt-6 text-cream/70 leading-relaxed">
-                Restaurants, wine bars and merchants — we'd love to hear from you. Reach our trade team for allocations, tastings and wholesale pricing.
+                Restaurants, wine bars and merchants â€” we'd love to hear from you. Reach our trade team for allocations, tastings and wholesale pricing.
               </p>
             </Reveal>
             <Reveal delay={0.3}>
-              <a href="mailto:trade@saltrockwines.com" className="mt-10 btn-gold btn-shimmer inline-flex max-w-full break-all text-center">
-                trade@saltrockwines.com
+              <a href="mailto:admin@saltrockwines.com" className="mt-10 btn-gold btn-shimmer inline-flex max-w-full break-all text-center">
+                admin@saltrockwines.com
               </a>
             </Reveal>
           </div>
@@ -179,3 +179,4 @@ function StockistsPage() {
     </div>
   );
 }
+

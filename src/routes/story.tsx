@@ -5,9 +5,11 @@ import { SiteFooter } from "@/components/site-footer";
 import { Reveal } from "@/components/reveal";
 import { ArrowRight } from "lucide-react";
 
-import heroImg from "@/assets/hero-vineyard.jpg";
+import vineyardImg from "@/assets/hero-relight3.png";
+import harvestGrapesImg from "@/assets/Sunlit Harvest of Dark Grapes.png";
+import fermentationVatImg from "@/assets/Warm Rustic Winery Fermentation Tank.png";
+import bottlingLineImg from "@/assets/Salt Rock Sauvignon Blanc Bottling Line.png";
 import cellarImg from "@/assets/story-cellar.jpg";
-import harvestImg from "@/assets/story-harvest.jpg";
 import pairingImg from "@/assets/pairing.jpg";
 import bottleImg from "@/assets/bottles/Stand_Alone_Pinot_Noir.jpg";
 import founder1Img from "@/assets/team/founder-1.jpg";
@@ -77,12 +79,12 @@ export const Route = createFileRoute("/story")({
 });
 
 const chapters = [
-  { n: "01", title: "The Vineyard", img: heroImg, body: "Handpicked sites across Stellenbosch — each chosen for what it can say about a single variety when the season is right." },
-  { n: "02", title: "The Harvest", img: harvestImg, body: "Bunch by bunch, at first light. We pick when the fruit is ready, not when the calendar demands it." },
-  { n: "03", title: "Fermentation", img: bottleImg, body: "Wild and considered. We intervene as little as the vintage will allow, so the site speaks through the glass." },
-  { n: "04", title: "Barrel Ageing", img: cellarImg, body: "Time in old and new French oak — enough to add spine and shadow, never enough to hide the fruit." },
-  { n: "05", title: "Bottling", img: bottleImg, body: "Small batches. Individually numbered ranges. Each bottle a quiet record of a specific season." },
-  { n: "06", title: "The Table", img: pairingImg, body: "The final chapter isn't ours — it's yours. Poured slowly, shared generously, remembered fondly." },
+  { n: "01", title: "The Vineyard", img: vineyardImg, alt: "Vineyard rows beneath the Stellenbosch mountains at sunset", body: "Handpicked sites across Stellenbosch — each chosen for what it can say about a single variety when the season is right." },
+  { n: "02", title: "The Harvest", img: harvestGrapesImg, alt: "Freshly harvested dark grapes ready for winemaking", body: "Bunch by bunch, at first light. We pick when the fruit is ready, not when the calendar demands it." },
+  { n: "03", title: "Fermentation", img: fermentationVatImg, alt: "Large oak fermentation vat in the winery", body: "Wild and considered. We intervene as little as the vintage will allow, so the site speaks through the glass." },
+  { n: "04", title: "Barrel Ageing", img: cellarImg, alt: "Salt Rock oak barrels resting in the cellar", body: "Time in old and new French oak — enough to add spine and shadow, never enough to hide the fruit." },
+  { n: "05", title: "Bottling", img: bottlingLineImg, alt: "Salt Rock Sauvignon Blanc bottles moving through the winery bottling line", body: "Small batches. Individually numbered ranges. Each bottle a quiet record of a specific season." },
+  { n: "06", title: "The Table", img: pairingImg, alt: "Wine served at a shared table", body: "The final chapter isn't ours — it's yours. Poured slowly, shared generously, remembered fondly." },
 ];
 
 function StoryPage() {
@@ -91,7 +93,7 @@ function StoryPage() {
       <SiteNav />
       <main>
         <section className="relative h-[80svh] min-h-[500px] overflow-hidden">
-          <img src={heroImg} alt="" className="absolute inset-0 h-full w-full object-cover animate-slow-zoom" width={1920} height={1280} />
+          <img src={vineyardImg} alt="" className="absolute inset-0 h-full w-full object-cover object-[50%_58%] animate-slow-zoom" width={832} height={816} />
           <div className="absolute inset-0" style={{ background: "var(--gradient-hero-veil)" }} />
           <div className="relative z-10 h-full container-luxe flex flex-col justify-end pb-20 md:pb-28">
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.4 }} className="eyebrow">
@@ -248,7 +250,7 @@ function StoryPage() {
             <div className={`container-luxe py-20 md:py-32 grid md:grid-cols-12 gap-10 md:gap-16 items-center ${i % 2 ? "md:[&>*:first-child]:order-2" : ""}`}>
               <Reveal className="md:col-span-7">
                 <div className="relative aspect-[5/4] overflow-hidden">
-                  <img src={c.img} alt={c.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+                  <img src={c.img} alt={c.alt} loading="lazy" className={`absolute inset-0 h-full w-full object-cover ${c.img === vineyardImg ? "object-[68%_58%]" : c.img === harvestGrapesImg ? "object-[50%_45%]" : c.img === fermentationVatImg ? "object-[50%_45%]" : ""}`} />
                 </div>
               </Reveal>
               <Reveal delay={0.15} className="md:col-span-5">

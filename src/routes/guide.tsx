@@ -2,9 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { Reveal } from "@/components/reveal";
-import heroImg from "@/assets/hero-vineyard.jpg";
+import vineyardImg from "@/assets/hero-relight3.png";
 import cellarImg from "@/assets/story-cellar.jpg";
-import harvestImg from "@/assets/story-harvest.jpg";
 import pairingImg from "@/assets/pairing.jpg";
 
 export const Route = createFileRoute("/guide")({
@@ -25,7 +24,7 @@ const chapters = [
   {
     kicker: "Chapter I",
     title: "How to Choose Wine",
-    img: heroImg,
+    img: vineyardImg,
     body: "Begin with the occasion, then the table. A quiet weeknight calls for something bright and unencumbered — our Lifestyle Chenin or Sauvignon Blanc. A slow dinner invites structure: the Stand Alone Pinot Noir or Chardonnay. Choose the mood first; the bottle follows.",
     tips: ["Match weight of wine to weight of food", "Cooler climates give brighter acidity", "Trust the winemaker's own notes"],
   },
@@ -46,14 +45,14 @@ const chapters = [
   {
     kicker: "Chapter IV",
     title: "Cellaring & Storage",
-    img: harvestImg,
+    img: cellarImg,
     body: "Wine wants stillness, darkness and a steady cool. A cupboard away from the kitchen is often enough. Store bottles on their side to keep the cork moist, and avoid rooms that swing more than a few degrees across the day.",
     tips: ["Ideal cellar: 12–14°C, 60–70% humidity", "Away from direct light and vibration", "Lifestyle range: drink within 2 years"],
   },
   {
     kicker: "Chapter V",
     title: "South African Wine Regions",
-    img: heroImg,
+    img: vineyardImg,
     body: "Every Salt Rock bottle carries a place. Stellenbosch's Helderberg gives our Chenins their granite tension. Elgin's cool mountain vineyards lend Chardonnay a Burgundian finesse. The Hemel en Aarde ridge, cooled by Atlantic breath, is where our Pinot Noir was always going to be born.",
     tips: ["Helderberg — bush-vine Chenin, Cinsault", "Elgin — cool-climate Chardonnay", "Hemel en Aarde — Pinot Noir"],
   },
@@ -83,7 +82,7 @@ function GuidePage() {
             <div className={`container-luxe grid md:grid-cols-12 gap-12 md:gap-16 items-center ${i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""}`}>
               <Reveal className="md:col-span-5">
                 <div className="relative aspect-[4/5] overflow-hidden">
-                  <img src={c.img} alt={c.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-[2000ms] hover:scale-105" />
+                  <img src={c.img} alt={c.title} loading="lazy" style={{ objectPosition: c.img === vineyardImg ? "68% center" : undefined }} className="h-full w-full object-cover transition-transform duration-[2000ms] hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal/50 to-transparent" />
                   <p className="absolute top-6 left-6 eyebrow">{c.kicker}</p>
                 </div>

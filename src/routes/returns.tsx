@@ -23,7 +23,7 @@ export const Route = createFileRoute("/returns")({
             <h1 className="mt-6 text-5xl md:text-6xl font-display leading-[1]">The Salt Rock <em className="text-gold not-italic">guarantee.</em></h1>
           </Reveal>
           <div className="mt-10 space-y-6 text-cream/80 leading-[1.9]">
-            <p>If a bottle arrives damaged, corked, or not as described, we replace it — no questions asked. Simply email <a href="mailto:hello@saltrockwines.com" className="text-gold link-underline">hello@saltrockwines.com</a> within 14 days of delivery with a photo of the bottle and we'll organise a replacement or refund.</p>
+            <p>If a bottle arrives damaged, corked, or not as described, we replace it — no questions asked. Simply email <a href="mailto:admin@saltrockwines.com" className="text-gold link-underline">admin@saltrockwines.com</a> within 14 days of delivery with a photo of the bottle and we'll organise a replacement or refund.</p>
             <p>Unopened, undamaged bottles may be returned within 14 days for a full refund of the wine cost. Return shipping is at the customer's expense unless the return is due to our error.</p>
           </div>
           <div className="mt-16"><Link to="/contact" className="btn-gold">Contact us</Link></div>

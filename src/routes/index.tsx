@@ -10,8 +10,9 @@ import { WineCard } from "@/components/wine-card";
 import { featuredWines } from "@/lib/wines";
 
 import heroImg from "@/assets/hero-relight3.png";
+import harvestGrapesImg from "@/assets/Sunlit Harvest of Dark Grapes.png";
+import activeWinemakingImg from "@/assets/Cinematic Steaming Oak Fermentation Vat.png";
 import cellarImg from "@/assets/story-cellar.jpg";
-import harvestImg from "@/assets/story-harvest.jpg";
 import pairingImg from "@/assets/pairing.jpg";
 
 export const Route = createFileRoute("/")({
@@ -81,14 +82,14 @@ function Hero() {
   }, [mx, my]);
 
   return (
-    <section ref={ref} className="relative h-[100svh] min-h-[680px] w-full overflow-hidden">
+    <section ref={ref} className="home-hero relative h-[100svh] min-h-[680px] w-full overflow-hidden">
       <motion.div style={{ y, scale }} className="absolute inset-0 will-change-transform">
         <img
           src={heroImg}
           alt="Salt Rock vineyard at golden hour"
           width={832}
           height={816}
-          className="h-[118%] w-full object-cover animate-slow-zoom"
+          className="home-hero-image h-full w-full object-cover animate-slow-zoom"
         />
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero-veil)" }} />
         <motion.div style={{ x: pxA, y: pyA }} className="absolute top-[10%] right-[8%] h-[38vw] w-[38vw] max-w-[560px] max-h-[560px] rounded-full bg-gold/12 blur-[120px] animate-aurora" />
@@ -99,12 +100,12 @@ function Hero() {
 
       <Particles />
 
-      <motion.div style={{ opacity }} className="relative z-10 h-full container-luxe flex flex-col justify-end pt-32 md:pt-40 lg:pt-44 pb-28 md:pb-32">
+      <motion.div style={{ opacity }} className="relative z-10 h-full container-luxe flex flex-col justify-end pt-32 md:pt-40 lg:pt-44 pb-20 md:pb-24">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="eyebrow flex items-center gap-3"
+          className="eyebrow flex items-center gap-3 text-charcoal/80"
         >
           <span className="gold-line" />
           Stellenbosch · Since climate met craft
@@ -296,13 +297,13 @@ function FeaturedWines() {
   );
 }
 
-function LifestyleBand({ img, eyebrow, title, body, reverse }: { img: string; eyebrow: string; title: string; body: string; reverse?: boolean }) {
+function LifestyleBand({ img, eyebrow, title, body, reverse, imageAlt }: { img: string; eyebrow: string; title: string; body: string; reverse?: boolean; imageAlt?: string }) {
   return (
     <section className="py-24 md:py-32 bg-charcoal">
       <div className={`container-luxe grid md:grid-cols-2 gap-12 md:gap-20 items-center ${reverse ? "md:[&>*:first-child]:order-2" : ""}`}>
         <Reveal>
           <div className="relative aspect-[4/5] overflow-hidden">
-            <img src={img} alt={title} loading="lazy" className="h-full w-full object-cover transition-transform duration-[2000ms] hover:scale-105" />
+            <img src={img} alt={imageAlt ?? title} loading="lazy" className="h-full w-full object-cover transition-transform duration-[2000ms] hover:scale-105" />
             <div className="absolute inset-0 bg-gradient-to-t from-charcoal/50 to-transparent" />
           </div>
         </Reveal>
@@ -322,9 +323,9 @@ function LifestyleBand({ img, eyebrow, title, body, reverse }: { img: string; ey
 
 function StoryStrip() {
   const stages = [
-    { n: "01", img: harvestImg, title: "Harvest", body: "Handpicked at first light, bunch by bunch." },
-    { n: "02", img: cellarImg, title: "Cellar", body: "Slow, restrained winemaking. Nothing rushed." },
-    { n: "03", img: pairingImg, title: "Table", body: "Poured with the people you love most." },
+    { n: "01", img: harvestGrapesImg, title: "Harvest", body: "Handpicked at first light, bunch by bunch.", alt: "Freshly harvested dark grapes ready for winemaking" },
+    { n: "02", img: activeWinemakingImg, title: "Cellar", body: "Slow, restrained winemaking. Nothing rushed.", alt: "Winemaker working over a steaming oak fermentation vat" },
+    { n: "03", img: pairingImg, title: "Table", body: "Poured with the people you love most.", alt: "Wine served at a shared table" },
   ];
   return (
     <section className="py-32 md:py-40 bg-charcoal">
@@ -341,7 +342,7 @@ function StoryStrip() {
             <Reveal key={s.n} delay={i * 0.1}>
               <div className="group relative overflow-hidden">
                 <div className="relative aspect-[4/5] overflow-hidden">
-                  <img src={s.img} alt={s.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-[1600ms] group-hover:scale-105" />
+                  <img src={s.img} alt={s.alt ?? s.title} loading="lazy" className={`h-full w-full object-cover transition-transform duration-[1600ms] group-hover:scale-105 ${s.n === "01" ? "object-[50%_45%]" : s.n === "02" ? "object-[50%_38%] md:object-[50%_42%]" : ""}`} />
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-transparent" />
                 </div>
                 <div className="absolute inset-x-0 bottom-0 p-8">
@@ -494,10 +495,11 @@ function Home() {
         <StoryStrip />
         <LifestyleBand
           reverse
-          img={cellarImg}
+          img={activeWinemakingImg}
           eyebrow="From the cellar"
           title="Patient hands. Cool stone."
           body="Nothing is hurried in our cellar. Small vessels, gentle extractions, and the confidence to let each site speak for itself. Restraint is our loudest signature."
+          imageAlt="Winemaker working over a steaming oak fermentation vat"
         />
         <SommelierCTA />
         <Testimonials />

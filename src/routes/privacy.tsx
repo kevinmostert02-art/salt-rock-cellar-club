@@ -22,7 +22,7 @@ export const Route = createFileRoute("/privacy")({
           <Reveal delay={0.1}><h1 className="mt-6 text-5xl md:text-6xl font-display leading-[1]">Your privacy, <em className="text-gold not-italic">respected.</em></h1></Reveal>
           <div className="mt-10 space-y-6 text-cream/80 leading-[1.9]">
             <p>Salt Rock Wines collects only the information required to fulfil your order and communicate with you — name, delivery address, email and order history. We do not sell or share your details with third parties beyond the couriers and payment processors required to complete your purchase.</p>
-            <p>You may request a copy or deletion of your personal information at any time by emailing <a href="mailto:hello@saltrockwines.com" className="text-gold link-underline">hello@saltrockwines.com</a>.</p>
+            <p>You may request a copy or deletion of your personal information at any time by emailing <a href="mailto:admin@saltrockwines.com" className="text-gold link-underline">admin@saltrockwines.com</a>.</p>
             <p className="text-sm text-cream/55">This page is maintained by Salt Rock Wines as a summary of practices. For full legal terms please contact us.</p>
           </div>
         </div>

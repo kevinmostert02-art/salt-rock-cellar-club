@@ -3,14 +3,14 @@ import { Instagram, Facebook, Mail, MapPin, Truck, ShieldCheck, Lock } from "luc
 import { useState } from "react";
 
 import logoImg from "@/assets/saltrock-logo.webp";
-import heroImg from "@/assets/hero-vineyard.jpg";
-import cellarImg from "@/assets/story-cellar.jpg";
-import harvestImg from "@/assets/story-harvest.jpg";
+import vineyardImg from "@/assets/hero-relight3.png";
+import harvestGrapesImg from "@/assets/Sunlit Harvest of Dark Grapes.png";
+import activeWinemakingImg from "@/assets/Cinematic Steaming Oak Fermentation Vat.png";
 import pairingImg from "@/assets/pairing.jpg";
 import elNino from "@/assets/bottles/El_Nino_Cinsault.jpg";
 import saPinot from "@/assets/bottles/Stand_Alone_Pinot_Noir.jpg";
 
-const gramTiles = [heroImg, cellarImg, harvestImg, pairingImg, elNino, saPinot];
+const gramTiles = [vineyardImg, activeWinemakingImg, harvestGrapesImg, pairingImg, elNino, saPinot];
 
 export function SiteFooter() {
   const [email, setEmail] = useState("");
@@ -21,7 +21,7 @@ export function SiteFooter() {
       {/* Wine Club / Newsletter */}
       <section className="border-b border-border relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
-          <img src={heroImg} alt="" className="h-full w-full object-cover" />
+          <img src={vineyardImg} alt="" className="h-full w-full object-cover" />
         </div>
         <div className="container-luxe py-24 md:py-32 text-center relative">
           <p className="eyebrow">Join the Wine Club</p>
@@ -72,7 +72,7 @@ export function SiteFooter() {
           <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
             {gramTiles.map((src, i) => (
               <a key={i} href="https://instagram.com/saltrockwines" target="_blank" rel="noreferrer" className="relative aspect-square overflow-hidden group bg-burgundy-deep/40">
-                <img src={src} alt="" loading="lazy" className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-110" />
+                <img src={src} alt="" loading="lazy" className={`h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-110 ${src === activeWinemakingImg ? "object-[50%_38%]" : src === harvestGrapesImg ? "object-[50%_45%]" : ""}`} />
                 <div className="absolute inset-0 bg-charcoal/40 opacity-0 group-hover:opacity-100 transition-opacity grid place-items-center">
                   <Instagram className="text-gold" size={20} />
                 </div>
@@ -128,7 +128,7 @@ export function SiteFooter() {
             <li><Link to="/shipping" className="hover:text-gold transition-colors">Shipping</Link></li>
             <li><Link to="/returns" className="hover:text-gold transition-colors">Returns</Link></li>
             <li><Link to="/contact" className="hover:text-gold transition-colors">Contact</Link></li>
-            <li><a href="mailto:hello@saltrockwines.com" className="hover:text-gold transition-colors flex items-center gap-1.5"><Mail size={12} /> Email us</a></li>
+            <li><a href="mailto:admin@saltrockwines.com" className="hover:text-gold transition-colors flex items-center gap-1.5"><Mail size={12} /> Email us</a></li>
             <li className="flex items-center gap-1.5"><MapPin size={12} /> Somerset West, ZA</li>
           </ul>
         </div>

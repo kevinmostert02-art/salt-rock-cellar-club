@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { Reveal } from "@/components/reveal";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/contact")({
@@ -31,8 +31,7 @@ function ContactPage() {
               <h1 className="mt-6 text-5xl md:text-6xl font-display leading-[1]">We'd love to <em className="text-gold not-italic">hear from you.</em></h1>
             </Reveal>
             <div className="mt-10 space-y-6 text-cream/80">
-              <p className="flex items-center gap-3"><Mail size={16} className="text-gold" /> <a href="mailto:hello@saltrockwines.com" className="link-underline">hello@saltrockwines.com</a></p>
-              <p className="flex items-center gap-3"><Phone size={16} className="text-gold" /> +27 (0)21 000 0000</p>
+              <p className="flex items-center gap-3"><Mail size={16} className="text-gold" /> <a href="mailto:admin@saltrockwines.com" className="link-underline">admin@saltrockwines.com</a></p>
               <p className="flex items-center gap-3"><MapPin size={16} className="text-gold" /> Eendrag Farm, Steynsrust Road, Somerset West</p>
             </div>
           </div>

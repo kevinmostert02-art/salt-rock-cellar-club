@@ -10,9 +10,9 @@ import { wines, type WineType } from "@/lib/wines";
 export const Route = createFileRoute("/wines")({
   head: () => ({
     meta: [
-      { title: "The Cellar — Salt Rock Wines" },
-      { name: "description", content: "Explore the full Salt Rock Wines collection: Climate, Lifestyle and Stand Alone ranges from Stellenbosch, South Africa." },
-      { property: "og:title", content: "The Cellar — Salt Rock Wines" },
+      { title: "The Cellar — Salt Rock Winery" },
+      { name: "description", content: "Explore the full Salt Rock Winery collection: Climate, Lifestyle and Stand Alone ranges from Stellenbosch, South Africa." },
+      { property: "og:title", content: "The Cellar — Salt Rock Winery" },
       { property: "og:description", content: "Every Salt Rock bottle, filterable by type, range, body, sweetness and price." },
       { property: "og:url", content: "/wines" },
     ],

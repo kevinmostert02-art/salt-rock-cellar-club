@@ -13,7 +13,7 @@ export const Route = createFileRoute("/guide")({
       { title: "The Salt Rock Guide — Wine Education" },
       { name: "description", content: "Choose, pair, serve and store wine like a sommelier. A quiet field guide to enjoying South African wine at its best." },
       { property: "og:title", content: "The Salt Rock Guide" },
-      { property: "og:description", content: "How to choose, pair, serve and store wine — a luxury magazine-style guide from Salt Rock Wines." },
+      { property: "og:description", content: "How to choose, pair, serve and store wine — a luxury magazine-style guide from Salt Rock Winery." },
       { property: "og:url", content: "/guide" },
     ],
     links: [{ rel: "canonical", href: "/guide" }],

@@ -6,6 +6,7 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  type ErrorRouteComponent,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
@@ -59,6 +60,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+// The router's errorComponent type expects an AsyncRouteComponent (optional preload()).
+(ErrorComponent as unknown as { preload?: () => Promise<void> | undefined }).preload = undefined;
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
@@ -94,7 +98,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               sameAs: ["https://www.instagram.com/saltrockwines"],
               address: {
                 "@type": "PostalAddress",
-                addressLocality: "Stellenbosch",
+                streetAddress: "Eendrag Farm, Steynsrust Road",
+                addressLocality: "Somerset West",
                 addressRegion: "Western Cape",
                 addressCountry: "ZA",
               },
@@ -108,7 +113,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
-  errorComponent: ErrorComponent,
+  errorComponent: ErrorComponent as ErrorRouteComponent,
 });
 
 function RootShell({ children }: { children: ReactNode }) {

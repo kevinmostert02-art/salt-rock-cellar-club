@@ -33,7 +33,7 @@ function ContactPage() {
             <div className="mt-10 space-y-6 text-cream/80">
               <p className="flex items-center gap-3"><Mail size={16} className="text-gold" /> <a href="mailto:hello@saltrockwines.com" className="link-underline">hello@saltrockwines.com</a></p>
               <p className="flex items-center gap-3"><Phone size={16} className="text-gold" /> +27 (0)21 000 0000</p>
-              <p className="flex items-center gap-3"><MapPin size={16} className="text-gold" /> Stellenbosch, Western Cape</p>
+              <p className="flex items-center gap-3"><MapPin size={16} className="text-gold" /> Eendrag Farm, Steynsrust Road, Somerset West</p>
             </div>
           </div>
           <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="glass p-8 md:p-10 space-y-5">

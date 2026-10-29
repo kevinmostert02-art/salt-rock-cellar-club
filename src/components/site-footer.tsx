@@ -129,7 +129,7 @@ export function SiteFooter() {
             <li><Link to="/returns" className="hover:text-gold transition-colors">Returns</Link></li>
             <li><Link to="/contact" className="hover:text-gold transition-colors">Contact</Link></li>
             <li><a href="mailto:hello@saltrockwines.com" className="hover:text-gold transition-colors flex items-center gap-1.5"><Mail size={12} /> Email us</a></li>
-            <li className="flex items-center gap-1.5"><MapPin size={12} /> Stellenbosch, ZA</li>
+            <li className="flex items-center gap-1.5"><MapPin size={12} /> Somerset West, ZA</li>
           </ul>
         </div>
       </div>

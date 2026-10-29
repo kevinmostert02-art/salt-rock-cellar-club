@@ -53,7 +53,7 @@ export function SiteNav({ transparentOnTop = true }: { transparentOnTop?: boolea
           <Link to="/" className="flex items-center gap-3 group">
             <img
               src={logoAsset.url}
-              alt="Salt Rock Wines"
+              alt="Salt Rock Winery"
               width={40}
               height={40}
               className="h-9 w-auto opacity-90 group-hover:opacity-100 transition-opacity duration-500"

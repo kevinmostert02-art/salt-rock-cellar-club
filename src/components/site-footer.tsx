@@ -85,7 +85,7 @@ export function SiteFooter() {
       <div className="container-luxe py-20 grid grid-cols-2 md:grid-cols-5 gap-10">
         <div className="col-span-2">
           <div className="flex items-center gap-3">
-            <img src={logoAsset.url} alt="Salt Rock Wines" width={52} height={52} className="h-11 w-auto opacity-90" />
+            <img src={logoAsset.url} alt="Salt Rock Winery" width={52} height={52} className="h-11 w-auto opacity-90" />
             <div className="text-2xl font-display">Salt<span className="text-gold">·</span>Rock</div>
           </div>
           <p className="mt-4 text-sm text-cream/60 max-w-xs leading-relaxed">
@@ -155,7 +155,7 @@ export function SiteFooter() {
 
       <div className="border-t border-border">
         <div className="container-luxe py-6 flex flex-col sm:flex-row gap-2 justify-between text-[0.65rem] tracking-[0.22em] uppercase text-muted-foreground">
-          <p>© {new Date().getFullYear()} Salt Rock Wines. Not for persons under 18.</p>
+          <p>© {new Date().getFullYear()} Salt Rock Winery. Not for persons under 18.</p>
           <div className="flex gap-6">
             <Link to="/privacy" className="hover:text-gold transition-colors">Privacy</Link>
             <Link to="/terms" className="hover:text-gold transition-colors">Terms</Link>

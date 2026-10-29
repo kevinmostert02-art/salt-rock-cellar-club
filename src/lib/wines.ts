@@ -42,7 +42,7 @@ export interface Wine {
   image: string;
 }
 
-// All data sourced from official Salt Rock Wines factsheets (Nov 2024 / 2025 releases)
+// All data sourced from official Salt Rock Winery factsheets (Nov 2024 / 2025 releases)
 // and the official Wine_Pricing.pdf. Do not paraphrase — this is the winemaker's own text.
 export const wines: Wine[] = [
   {

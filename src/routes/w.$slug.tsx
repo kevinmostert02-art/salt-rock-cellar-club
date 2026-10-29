@@ -22,7 +22,7 @@ export const Route = createFileRoute("/w/$slug")({
     const w = loaderData.wine;
     return {
       meta: [
-        { title: `${w.name} ${w.vintage} — Salt Rock Wines` },
+        { title: `${w.name} ${w.vintage} — Salt Rock Winery` },
         { name: "description", content: w.tasting },
         { property: "og:title", content: `${w.name} ${w.vintage}` },
         { property: "og:description", content: w.tasting },
@@ -43,7 +43,7 @@ export const Route = createFileRoute("/w/$slug")({
             description: w.tasting,
             image: w.image,
             sku: w.slug,
-            brand: { "@type": "Brand", name: "Salt Rock Wines" },
+            brand: { "@type": "Brand", name: "Salt Rock Winery" },
             category: w.type + " Wine",
             offers: {
               "@type": "Offer",

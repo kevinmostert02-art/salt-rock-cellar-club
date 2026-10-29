@@ -243,7 +243,7 @@ function Manifesto() {
         <div className="md:col-span-6 md:col-start-7">
           <Reveal delay={0.2}>
             <p className="text-lg text-cream/75 leading-[1.9]">
-              Salt Rock Wines is a collaboration between two nomads in the South African wine industry — wines serious enough to intrigue the aficionado, yet approachable and pleasing for the first-time drinker. Every bottle is handpicked, sustainably farmed, and made with an obsession for the sites we source from.
+              Salt Rock Winery is a collaboration between two nomads in the South African wine industry — wines serious enough to intrigue the aficionado, yet approachable and pleasing for the first-time drinker. Every bottle is handpicked, sustainably farmed, and made with an obsession for the sites we source from.
             </p>
           </Reveal>
           <Reveal delay={0.35}>

@@ -9,22 +9,21 @@ import heroImg from "@/assets/hero-vineyard.jpg";
 import cellarImg from "@/assets/story-cellar.jpg";
 import harvestImg from "@/assets/story-harvest.jpg";
 import pairingImg from "@/assets/pairing.jpg";
-import bottleAsset from "@/assets/bottles/Stand_Alone_Pinot_Noir.jpg.asset.json";
-import founder1Asset from "@/assets/team/founder-1.jpg.asset.json";
-import founder2Asset from "@/assets/team/founder-2.jpg.asset.json";
-import standAloneAsset from "@/assets/ranges/stand-alone-range.png.asset.json";
-import climateAsset from "@/assets/ranges/climate-range.jpg.asset.json";
-import lifestyleAsset from "@/assets/ranges/lifestyle-range.png.asset.json";
-const bottleImg = bottleAsset.url;
+import bottleImg from "@/assets/bottles/Stand_Alone_Pinot_Noir.jpg";
+import founder1Img from "@/assets/team/founder-1.jpg";
+import founder2Img from "@/assets/team/founder-2.jpg";
+import standAloneImg from "@/assets/ranges/stand-alone-range.png";
+import climateImg from "@/assets/ranges/climate-range.jpg";
+import lifestyleImg from "@/assets/ranges/lifestyle-range.png";
 
 const founders = [
-  { img: founder1Asset.url },
-  { img: founder2Asset.url },
+  { img: founder1Img, name: "Rudolph Steenkamp" },
+  { img: founder2Img, name: "Alexander Grier" },
 ];
 
 const team = [
   {
-    img: founder2Asset.url,
+    img: founder2Img,
     name: "Alexander Grier",
     role: "Winemaker",
     bio: [
@@ -34,7 +33,7 @@ const team = [
     ],
   },
   {
-    img: founder1Asset.url,
+    img: founder1Img,
     name: "Rudolph Steenkamp",
     role: "Winemaker",
     bio: [
@@ -49,17 +48,17 @@ const team = [
 
 const ranges = [
   {
-    img: standAloneAsset.url,
+    img: standAloneImg,
     name: "Stand Alone",
     body: "Our Stand Alone wines are all about reflecting the best possible version of what South Africa can give — single vineyards from the most bespoke slopes and regions for each variety, produced with minimal intervention and aged in a variety of vessels. Pinot Noir from the Hemel-en-Aarde Ridge, Chardonnay from Elgin and Chenin Blanc from Helderberg Stellenbosch.",
   },
   {
-    img: climateAsset.url,
+    img: climateImg,
     name: "Climate",
     body: "Our Climate wines have been crafted to create awareness of two climate phenomena the world has been experiencing in recent years: El Niño and La Niña. Serious enough to intrigue the wine geek, yet approachable for the first-time drinker — built on two unconventional varieties, Cinsault and Semillon Gris, from single vineyards that truly reflect the variety in a specific terroir.",
   },
   {
-    img: lifestyleAsset.url,
+    img: lifestyleImg,
     name: "Lifestyle",
     body: "Our Lifestyle wines are produced from special pockets around the greater Stellenbosch wine route to express the uniqueness of the region. These wines are distinct and truly reflect the terroir in each variety — and, as with every Salt Rock bottling, our winemaking approach remains minimal.",
   },
@@ -120,7 +119,7 @@ function StoryPage() {
                     <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 overflow-hidden rounded-full bg-charcoal/50 ring-1 ring-cream/10 shadow-2xl">
                       <img
                         src={f.img}
-                        alt=""
+                        alt={f.name}
                         loading="lazy"
                         className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-105"
                       />

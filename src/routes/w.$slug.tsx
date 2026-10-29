@@ -178,7 +178,7 @@ function WinePage() {
         <section className="container-luxe grid md:grid-cols-2 gap-12 md:gap-20 py-12 md:py-20 items-center">
           <Reveal>
             <div className="relative">
-              <div className="absolute -inset-10 pointer-events-none">
+              <div className="absolute inset-x-0 -inset-y-10 pointer-events-none md:-inset-10">
                 <div className="absolute top-1/4 left-1/2 -translate-x-1/2 h-[70%] w-[70%] rounded-full bg-gold/20 blur-[100px]" />
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-32 w-[70%] rounded-full bg-burgundy/40 blur-[80px]" />
               </div>

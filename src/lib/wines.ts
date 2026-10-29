@@ -1,11 +1,11 @@
-import elNino from "@/assets/bottles/El_Nino_Cinsault.jpg.asset.json";
-import laNina from "@/assets/bottles/La_Nina_Semillon_Gris.jpg.asset.json";
-import srChenin from "@/assets/bottles/Salt_Rock_Chenin_Blanc.jpg.asset.json";
-import srRed from "@/assets/bottles/Salt_Rock_Red_Blend_NV.png.asset.json";
-import srSauv from "@/assets/bottles/Salt_Rock_Sauvignon_Blanc.jpg.asset.json";
-import saChard from "@/assets/bottles/Stand_Alone_Chardonnay.png.asset.json";
-import saChenin from "@/assets/bottles/Stand_Alone_Chenin_Blanc.jpg.asset.json";
-import saPinot from "@/assets/bottles/Stand_Alone_Pinot_Noir.jpg.asset.json";
+import elNino from "@/assets/bottles/El_Nino_Cinsault.jpg";
+import laNina from "@/assets/bottles/La_Nina_Semillon_Gris.jpg";
+import srChenin from "@/assets/bottles/Salt_Rock_Chenin_Blanc.jpg";
+import srRed from "@/assets/bottles/Salt_Rock_Red_Blend_NV.png";
+import srSauv from "@/assets/bottles/Salt_Rock_Sauvignon_Blanc.jpg";
+import saChard from "@/assets/bottles/Stand_Alone_Chardonnay.png";
+import saChenin from "@/assets/bottles/Stand_Alone_Chenin_Blanc.jpg";
+import saPinot from "@/assets/bottles/Stand_Alone_Pinot_Noir.jpg";
 
 export type WineType = "Red" | "White" | "Rosé" | "Sparkling" | "Dessert";
 export type Range = "Climate" | "Lifestyle" | "Stand Alone";
@@ -69,7 +69,7 @@ export const wines: Wine[] = [
     technical: { alcohol: "13.63%", residualSugar: "1.7 g/l", totalAcidity: "5.1 g/l", volatileAcidity: "0.64 g/l", pH: "3.63" },
     pairings: ["Duck breast with cherry jus", "Roasted beetroot with goat's cheese", "Mushroom risotto", "Aged Brie"],
     occasions: ["Dinner party", "Celebration", "Gift"],
-    image: saPinot.url,
+    image: saPinot,
   },
   {
     slug: "stand-alone-chardonnay",
@@ -95,7 +95,7 @@ export const wines: Wine[] = [
     technical: { alcohol: "12.73%", residualSugar: "1.8 g/l", totalAcidity: "6.5 g/l", volatileAcidity: "0.55 g/l", pH: "3.19" },
     pairings: ["Grilled line fish with garlic butter", "Roast chicken with thyme and lemon", "Butter-poached crayfish", "Truffle pasta"],
     occasions: ["Dinner party", "Fine dining", "Sunday lunch"],
-    image: saChard.url,
+    image: saChard,
   },
   {
     slug: "stand-alone-chenin-blanc",
@@ -121,7 +121,7 @@ export const wines: Wine[] = [
     technical: { alcohol: "13.65%", residualSugar: "2.9 g/l", totalAcidity: "6.4 g/l", volatileAcidity: "0.45 g/l", pH: "3.18" },
     pairings: ["Duck breast with cherry jus", "Roasted beetroot with goat's cheese", "Sushi", "Thai curry"],
     occasions: ["Weeknight", "Celebration"],
-    image: saChenin.url,
+    image: saChenin,
   },
   {
     slug: "el-nino-cinsault",
@@ -147,7 +147,7 @@ export const wines: Wine[] = [
     technical: { alcohol: "13.5%", residualSugar: "1.1 g/l", totalAcidity: "5.2 g/l", volatileAcidity: "0.52 g/l", pH: "3.47" },
     pairings: ["Chicken liver parfait", "Springbok loin", "Roasted beetroot, lentil & feta salad", "Charcuterie"],
     occasions: ["Braai", "Weeknight", "Picnic"],
-    image: elNino.url,
+    image: elNino,
   },
   {
     slug: "la-nina-semillon-gris",
@@ -173,7 +173,7 @@ export const wines: Wine[] = [
     technical: { alcohol: "12.57%", residualSugar: "1.9 g/l", totalAcidity: "5.7 g/l", volatileAcidity: "0.35 g/l", pH: "3.18", totalExtract: "23.1 g/l" },
     pairings: ["Cheese boards", "Fresh fish", "Creamy pasta", "Seared scallops"],
     occasions: ["Fine dining", "Celebration"],
-    image: laNina.url,
+    image: laNina,
   },
   {
     slug: "salt-rock-chenin-blanc",
@@ -199,7 +199,7 @@ export const wines: Wine[] = [
     technical: { alcohol: "12.47%", residualSugar: "1.7 g/l", totalAcidity: "6.8 g/l", volatileAcidity: "0.33 g/l", pH: "3.12" },
     pairings: ["Grilled prawns with garlic butter", "Roast chicken with thyme and lemon", "Sushi", "Fresh salads"],
     occasions: ["Weeknight", "Picnic", "Braai"],
-    image: srChenin.url,
+    image: srChenin,
   },
   {
     slug: "salt-rock-sauvignon-blanc",
@@ -225,7 +225,7 @@ export const wines: Wine[] = [
     technical: { alcohol: "12.66%", residualSugar: "1.4 g/l", totalAcidity: "7.2 g/l", volatileAcidity: "0.38 g/l", pH: "3.06" },
     pairings: ["Grilled prawns with garlic butter", "Roast chicken with thyme and lemon", "Oysters", "Goat's cheese"],
     occasions: ["Weeknight", "Picnic"],
-    image: srSauv.url,
+    image: srSauv,
   },
   {
     slug: "salt-rock-red-blend-nv",
@@ -251,7 +251,7 @@ export const wines: Wine[] = [
     technical: { alcohol: "14.94%", residualSugar: "2.2 g/l", totalAcidity: "5.8 g/l", volatileAcidity: "0.54 g/l", pH: "3.53" },
     pairings: ["Rich stews", "Grilled steaks", "Grilled vegetables", "Mushroom-based dishes"],
     occasions: ["Braai", "Weeknight", "Dinner party"],
-    image: srRed.url,
+    image: srRed,
   },
 ];
 

@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Menu, X, ShoppingBag } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
-import logoAsset from "@/assets/saltrock-logo.webp.asset.json";
+import logoImg from "@/assets/saltrock-logo.webp";
 import { useCart } from "@/lib/cart";
 
 const nav = [
@@ -52,7 +52,7 @@ export function SiteNav({ transparentOnTop = true }: { transparentOnTop?: boolea
         >
           <Link to="/" className="flex items-center gap-3 group">
             <img
-              src={logoAsset.url}
+              src={logoImg}
               alt="Salt Rock Wines"
               width={40}
               height={40}

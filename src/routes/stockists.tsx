@@ -168,7 +168,7 @@ function StockistsPage() {
               </p>
             </Reveal>
             <Reveal delay={0.3}>
-              <a href="mailto:trade@saltrockwines.com" className="mt-10 btn-gold btn-shimmer inline-flex">
+              <a href="mailto:trade@saltrockwines.com" className="mt-10 btn-gold btn-shimmer inline-flex max-w-full break-all text-center">
                 trade@saltrockwines.com
               </a>
             </Reveal>

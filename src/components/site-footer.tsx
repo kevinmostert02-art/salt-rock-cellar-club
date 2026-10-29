@@ -2,15 +2,15 @@ import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Mail, MapPin, Truck, ShieldCheck, Lock } from "lucide-react";
 import { useState } from "react";
 
-import logoAsset from "@/assets/saltrock-logo.webp.asset.json";
+import logoImg from "@/assets/saltrock-logo.webp";
 import heroImg from "@/assets/hero-vineyard.jpg";
 import cellarImg from "@/assets/story-cellar.jpg";
 import harvestImg from "@/assets/story-harvest.jpg";
 import pairingImg from "@/assets/pairing.jpg";
-import elNino from "@/assets/bottles/El_Nino_Cinsault.jpg.asset.json";
-import saPinot from "@/assets/bottles/Stand_Alone_Pinot_Noir.jpg.asset.json";
+import elNino from "@/assets/bottles/El_Nino_Cinsault.jpg";
+import saPinot from "@/assets/bottles/Stand_Alone_Pinot_Noir.jpg";
 
-const gramTiles = [heroImg, cellarImg, harvestImg, pairingImg, elNino.url, saPinot.url];
+const gramTiles = [heroImg, cellarImg, harvestImg, pairingImg, elNino, saPinot];
 
 export function SiteFooter() {
   const [email, setEmail] = useState("");
@@ -85,7 +85,7 @@ export function SiteFooter() {
       <div className="container-luxe py-20 grid grid-cols-2 md:grid-cols-5 gap-10">
         <div className="col-span-2">
           <div className="flex items-center gap-3">
-            <img src={logoAsset.url} alt="Salt Rock Wines" width={52} height={52} className="h-11 w-auto opacity-90" />
+            <img src={logoImg} alt="Salt Rock Wines" width={52} height={52} className="h-11 w-auto opacity-90" />
             <div className="text-2xl font-display">Salt<span className="text-gold">·</span>Rock</div>
           </div>
           <p className="mt-4 text-sm text-cream/60 max-w-xs leading-relaxed">
@@ -142,7 +142,7 @@ export function SiteFooter() {
             <span className="flex items-center gap-2"><Truck size={12} className="text-gold" /> Nationwide Delivery</span>
             <span className="flex items-center gap-2"><ShieldCheck size={12} className="text-gold" /> Authentic Wines</span>
           </div>
-          <div className="flex gap-2 items-center">
+          <div className="flex flex-wrap gap-2 items-center">
             {["VISA", "MASTER", "EFT", "SNAPSCAN", "PAYFAST"].map((p) => (
               <span key={p} className="px-2 py-1 border border-white/12 text-[0.55rem] tracking-[0.2em] text-cream/60">{p}</span>
             ))}
@@ -156,7 +156,7 @@ export function SiteFooter() {
       <div className="border-t border-border">
         <div className="container-luxe py-6 flex flex-col sm:flex-row gap-2 justify-between text-[0.65rem] tracking-[0.22em] uppercase text-muted-foreground">
           <p>© {new Date().getFullYear()} Salt Rock Wines. Not for persons under 18.</p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
             <Link to="/privacy" className="hover:text-gold transition-colors">Privacy</Link>
             <Link to="/terms" className="hover:text-gold transition-colors">Terms</Link>
             <Link to="/shipping" className="hover:text-gold transition-colors">Shipping</Link>

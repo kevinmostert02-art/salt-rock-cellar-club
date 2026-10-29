@@ -9,7 +9,7 @@ import { Reveal } from "@/components/reveal";
 import { WineCard } from "@/components/wine-card";
 import { featuredWines } from "@/lib/wines";
 
-import heroImg from "@/assets/hero-vineyard.jpg";
+import heroImg from "@/assets/hero-relight3.png";
 import cellarImg from "@/assets/story-cellar.jpg";
 import harvestImg from "@/assets/story-harvest.jpg";
 import pairingImg from "@/assets/pairing.jpg";
@@ -86,8 +86,8 @@ function Hero() {
         <img
           src={heroImg}
           alt="Salt Rock vineyard at golden hour"
-          width={1920}
-          height={1280}
+          width={832}
+          height={816}
           className="h-[118%] w-full object-cover animate-slow-zoom"
         />
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero-veil)" }} />

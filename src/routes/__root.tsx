@@ -59,6 +59,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+// The router's errorComponent type expects an optional preload() on the component.
+ErrorComponent.preload = undefined;
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [

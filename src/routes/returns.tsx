@@ -6,9 +6,9 @@ import { Reveal } from "@/components/reveal";
 export const Route = createFileRoute("/returns")({
   head: () => ({
     meta: [
-      { title: "Returns — Salt Rock Winery" },
+      { title: "Returns — Salt Rock Wines" },
       { name: "description", content: "The Salt Rock guarantee — if a bottle isn't perfect, we'll make it right." },
-      { property: "og:title", content: "Returns — Salt Rock Winery" },
+      { property: "og:title", content: "Returns — Salt Rock Wines" },
       { property: "og:url", content: "/returns" },
     ],
     links: [{ rel: "canonical", href: "/returns" }],

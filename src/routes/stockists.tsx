@@ -104,9 +104,9 @@ function Section({
 export const Route = createFileRoute("/stockists")({
   head: () => ({
     meta: [
-      { title: "Stockists & Distributors — Salt Rock Winery" },
-      { name: "description", content: "Find Salt Rock Winery at leading South African distributors, wine merchants and restaurants — from Cape Town to Hermanus." },
-      { property: "og:title", content: "Where to find Salt Rock Winery" },
+      { title: "Stockists & Distributors — Salt Rock Wines" },
+      { name: "description", content: "Find Salt Rock Wines at leading South African distributors, wine merchants and restaurants — from Cape Town to Hermanus." },
+      { property: "og:title", content: "Where to find Salt Rock Wines" },
       { property: "og:description", content: "Our distributors, wine merchants and restaurant partners across South Africa." },
     ],
     links: [{ rel: "canonical", href: "/stockists" }],
@@ -140,7 +140,7 @@ function StockistsPage() {
         <Section
           eyebrow="Our Distributors"
           title={<>Merchants <em className="text-gold not-italic">&amp;</em> Importers</>}
-          lede="Purchase Salt Rock Winery through South Africa's leading independent wine merchants and importers."
+          lede="Purchase Salt Rock Wines through South Africa's leading independent wine merchants and importers."
           items={distributors}
           icon={Wine}
         />

@@ -64,13 +64,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Salt Rock Winery — Crafted by Nature. Perfected by Time." },
-      { name: "description", content: "Salt Rock Winery: single-site Stellenbosch wines revealing the intricate connection between climate and terroir. Shop the cellar, join the club, and discover our story." },
-      { name: "author", content: "Salt Rock Winery" },
-      { property: "og:title", content: "Salt Rock Winery — Stellenbosch" },
+      { title: "Salt Rock Wines — Crafted by Nature. Perfected by Time." },
+      { name: "description", content: "Salt Rock Wines: single-site Stellenbosch wines revealing the intricate connection between climate and terroir. Shop the cellar, join the club, and discover our story." },
+      { name: "author", content: "Salt Rock Wines" },
+      { property: "og:title", content: "Salt Rock Wines — Stellenbosch" },
       { property: "og:description", content: "Handpicked, single-site South African wines from the sundrenched vineyards of Stellenbosch." },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "Salt Rock Winery" },
+      { property: "og:site_name", content: "Salt Rock Wines" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
@@ -88,7 +88,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@graph": [
             {
               "@type": "Organization",
-              name: "Salt Rock Winery",
+              name: "Salt Rock Wines",
               url: "/",
               logo: faviconAsset.url,
               sameAs: ["https://www.instagram.com/saltrockwines"],
@@ -99,7 +99,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                 addressCountry: "ZA",
               },
             },
-            { "@type": "WebSite", name: "Salt Rock Winery", url: "/" },
+            { "@type": "WebSite", name: "Salt Rock Wines", url: "/" },
           ],
         }),
       },

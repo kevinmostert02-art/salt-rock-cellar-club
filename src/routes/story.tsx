@@ -30,7 +30,7 @@ const team = [
     bio: [
       "Having pursued BSc Food Science (Bio) at Stellenbosch University, I embarked on my wine journey by partaking in harvests around the world. My experience includes working at Villiera Wines in South Africa, as well as in the USA, Australia, Tasmania, and Domaine Grier in France.",
       "Following this, I briefly served as a consulting winemaker at Highlands Road Estate in Elgin and then spent four vintages as an assistant winemaker at La Vierge in the Hemel-en-Aarde Valley.",
-      "I later transitioned to Villiera Wines as the full-time Cap Classique winemaker until 2023, and I now dedicate my focus to Salt Rock Winery alongside providing Cap Classique consulting.",
+      "I later transitioned to Villiera Wines as the full-time Cap Classique winemaker until 2023, and I now dedicate my focus to Salt Rock Wines alongside providing Cap Classique consulting.",
     ],
   },
   {
@@ -68,9 +68,9 @@ const ranges = [
 export const Route = createFileRoute("/story")({
   head: () => ({
     meta: [
-      { title: "Our Story — Salt Rock Winery" },
+      { title: "Our Story — Salt Rock Wines" },
       { name: "description", content: "From vineyard to bottling: the six chapters behind every Salt Rock wine." },
-      { property: "og:title", content: "Our Story — Salt Rock Winery" },
+      { property: "og:title", content: "Our Story — Salt Rock Wines" },
       { property: "og:description", content: "A collaboration between two nomads of the South African wine industry." },
     ],
   }),
@@ -139,7 +139,7 @@ function StoryPage() {
               <Reveal><p className="eyebrow">Meet our passionate team</p></Reveal>
               <Reveal delay={0.1}>
                 <h2 className="mt-6 text-4xl md:text-6xl font-display leading-[1.05]">
-                  The Faces Behind <em className="text-gold not-italic">Salt Rock Winery</em>
+                  The Faces Behind <em className="text-gold not-italic">Salt Rock Wines</em>
                 </h2>
               </Reveal>
             </div>
@@ -179,7 +179,7 @@ function StoryPage() {
           </Reveal>
           <Reveal delay={0.2}>
             <p className="mt-8 text-lg text-cream/70 leading-[1.9]">
-              Through Salt Rock Winery, we aim to create awareness of the effect of two climate
+              Through Salt Rock Wines, we aim to create awareness of the effect of two climate
               phenomena the world has been experiencing in the past few years: El Niño and La Niña.
             </p>
           </Reveal>

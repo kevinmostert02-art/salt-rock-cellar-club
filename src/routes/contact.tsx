@@ -8,9 +8,9 @@ import { useState } from "react";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Salt Rock Winery" },
-      { name: "description", content: "Get in touch with Salt Rock Winery — cellar visits, corporate gifting and general enquiries." },
-      { property: "og:title", content: "Contact — Salt Rock Winery" },
+      { title: "Contact — Salt Rock Wines" },
+      { name: "description", content: "Get in touch with Salt Rock Wines — cellar visits, corporate gifting and general enquiries." },
+      { property: "og:title", content: "Contact — Salt Rock Wines" },
       { property: "og:url", content: "/contact" },
     ],
     links: [{ rel: "canonical", href: "/contact" }],

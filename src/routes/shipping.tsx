@@ -7,9 +7,9 @@ import { Truck, Package, Clock, MapPin } from "lucide-react";
 export const Route = createFileRoute("/shipping")({
   head: () => ({
     meta: [
-      { title: "Shipping — Salt Rock Winery" },
+      { title: "Shipping — Salt Rock Wines" },
       { name: "description", content: "Complimentary nationwide shipping on orders over R750. Careful, temperature-aware dispatch from Stellenbosch." },
-      { property: "og:title", content: "Shipping — Salt Rock Winery" },
+      { property: "og:title", content: "Shipping — Salt Rock Wines" },
       { property: "og:url", content: "/shipping" },
     ],
     links: [{ rel: "canonical", href: "/shipping" }],

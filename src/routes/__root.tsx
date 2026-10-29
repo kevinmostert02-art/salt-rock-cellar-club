@@ -59,8 +59,8 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-// The router's errorComponent type expects an optional preload() on the component.
-ErrorComponent.preload = undefined;
+// The router's errorComponent type expects an AsyncRouteComponent (optional preload()).
+(ErrorComponent as unknown as { preload?: () => Promise<void> | undefined }).preload = undefined;
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
@@ -112,7 +112,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
-  errorComponent: ErrorComponent,
+  errorComponent: ErrorComponent as ErrorRouteComponent,
 });
 
 function RootShell({ children }: { children: ReactNode }) {

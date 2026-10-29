@@ -9,68 +9,23 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WinesRouteImport } from './routes/wines'
-import { Route as TermsRouteImport } from './routes/terms'
-import { Route as StoryRouteImport } from './routes/story'
-import { Route as StockistsRouteImport } from './routes/stockists'
-import { Route as SommelierRouteImport } from './routes/sommelier'
-import { Route as ShippingRouteImport } from './routes/shipping'
-import { Route as ReturnsRouteImport } from './routes/returns'
-import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as GuideRouteImport } from './routes/guide'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as ClubRouteImport } from './routes/club'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ClubRouteImport } from './routes/club'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as GuideRouteImport } from './routes/guide'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ReturnsRouteImport } from './routes/returns'
+import { Route as ShippingRouteImport } from './routes/shipping'
+import { Route as SommelierRouteImport } from './routes/sommelier'
+import { Route as StockistsRouteImport } from './routes/stockists'
+import { Route as StoryRouteImport } from './routes/story'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as WinesRouteImport } from './routes/wines'
 import { Route as WSlugRouteImport } from './routes/w.$slug'
 
-const WinesRoute = WinesRouteImport.update({
-  id: '/wines',
-  path: '/wines',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TermsRoute = TermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StoryRoute = StoryRouteImport.update({
-  id: '/story',
-  path: '/story',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StockistsRoute = StockistsRouteImport.update({
-  id: '/stockists',
-  path: '/stockists',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SommelierRoute = SommelierRouteImport.update({
-  id: '/sommelier',
-  path: '/sommelier',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ShippingRoute = ShippingRouteImport.update({
-  id: '/shipping',
-  path: '/shipping',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ReturnsRoute = ReturnsRouteImport.update({
-  id: '/returns',
-  path: '/returns',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrivacyRoute = PrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GuideRoute = GuideRouteImport.update({
-  id: '/guide',
-  path: '/guide',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ClubRoute = ClubRouteImport.update({
@@ -78,9 +33,54 @@ const ClubRoute = ClubRouteImport.update({
   path: '/club',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuideRoute = GuideRouteImport.update({
+  id: '/guide',
+  path: '/guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReturnsRoute = ReturnsRouteImport.update({
+  id: '/returns',
+  path: '/returns',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShippingRoute = ShippingRouteImport.update({
+  id: '/shipping',
+  path: '/shipping',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SommelierRoute = SommelierRouteImport.update({
+  id: '/sommelier',
+  path: '/sommelier',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StockistsRoute = StockistsRouteImport.update({
+  id: '/stockists',
+  path: '/stockists',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StoryRoute = StoryRouteImport.update({
+  id: '/story',
+  path: '/story',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WinesRoute = WinesRouteImport.update({
+  id: '/wines',
+  path: '/wines',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WSlugRoute = WSlugRouteImport.update({
@@ -201,74 +201,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/wines': {
-      id: '/wines'
-      path: '/wines'
-      fullPath: '/wines'
-      preLoaderRoute: typeof WinesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/terms': {
-      id: '/terms'
-      path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof TermsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/story': {
-      id: '/story'
-      path: '/story'
-      fullPath: '/story'
-      preLoaderRoute: typeof StoryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/stockists': {
-      id: '/stockists'
-      path: '/stockists'
-      fullPath: '/stockists'
-      preLoaderRoute: typeof StockistsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sommelier': {
-      id: '/sommelier'
-      path: '/sommelier'
-      fullPath: '/sommelier'
-      preLoaderRoute: typeof SommelierRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/shipping': {
-      id: '/shipping'
-      path: '/shipping'
-      fullPath: '/shipping'
-      preLoaderRoute: typeof ShippingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/returns': {
-      id: '/returns'
-      path: '/returns'
-      fullPath: '/returns'
-      preLoaderRoute: typeof ReturnsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/privacy': {
-      id: '/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof PrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/guide': {
-      id: '/guide'
-      path: '/guide'
-      fullPath: '/guide'
-      preLoaderRoute: typeof GuideRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/club': {
@@ -278,11 +215,74 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClubRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guide': {
+      id: '/guide'
+      path: '/guide'
+      fullPath: '/guide'
+      preLoaderRoute: typeof GuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/returns': {
+      id: '/returns'
+      path: '/returns'
+      fullPath: '/returns'
+      preLoaderRoute: typeof ReturnsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shipping': {
+      id: '/shipping'
+      path: '/shipping'
+      fullPath: '/shipping'
+      preLoaderRoute: typeof ShippingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sommelier': {
+      id: '/sommelier'
+      path: '/sommelier'
+      fullPath: '/sommelier'
+      preLoaderRoute: typeof SommelierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/stockists': {
+      id: '/stockists'
+      path: '/stockists'
+      fullPath: '/stockists'
+      preLoaderRoute: typeof StockistsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/story': {
+      id: '/story'
+      path: '/story'
+      fullPath: '/story'
+      preLoaderRoute: typeof StoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wines': {
+      id: '/wines'
+      path: '/wines'
+      fullPath: '/wines'
+      preLoaderRoute: typeof WinesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/w/$slug': {

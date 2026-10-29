@@ -94,7 +94,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               sameAs: ["https://www.instagram.com/saltrockwines"],
               address: {
                 "@type": "PostalAddress",
-                addressLocality: "Stellenbosch",
+                streetAddress: "Eendrag Farm, Steynsrust Road",
+                addressLocality: "Somerset West",
                 addressRegion: "Western Cape",
                 addressCountry: "ZA",
               },
